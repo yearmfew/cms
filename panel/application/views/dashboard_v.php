@@ -42,7 +42,7 @@
   <!-- #app-customizer -->
 
   <!-- SIDE PANEL -->
-  <?php $this->load->view('includes/navbar-rightside'); ?>
+<!-- bu panelin html hali includes içinde sonra kullanılabilir diye duruyor ancak burada kullanmadığımız için çağırmadık... -->
 
   <!-- /#side-panel -->
 
