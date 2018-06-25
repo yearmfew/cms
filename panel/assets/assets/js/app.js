@@ -554,6 +554,18 @@
 // initialize app
 +function($, window) { 'use strict';
 	window.app.init();
+
+// admin paneli renk düzenleme
+// admin paneli şu anda ayarladığımız gibi kalıyor fakat biz bu ayarlama seçeneğini kapatırsak 
+// aşağıdaki kodları aktif hale getirip renkleri buradan ayarlamalıyız...
+/*window.app.menubar.setTheme("light");
+window.app.menubar.applyTheme();
+
+window.app.navbar.setTheme("warning");
+window.app.navbar.applyTheme();
+window.app.saveSettings();
+*/
+
 	window.app.menubar.init();
 	window.app.navbar.init();
 	window.app.customizer.init();
