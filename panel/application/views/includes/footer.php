@@ -6,7 +6,7 @@
         <li><a href="javascript:void(0)">Privacy Policy</a></li>
         <li><a href="javascript:void(0)">Feedback <i class="fa fa-angle-up m-l-md"></i></a></li>
       </ul>
-      <div class="copyright pull-left">Copyright RaThemes 2016 &copy;</div>
+      <div class="copyright pull-left">&copy; Tüm hakları saklıdır... Birol YILMAZ <?php echo date('Y'); ?> </div>
     </div>
   </footer>
 </div>
