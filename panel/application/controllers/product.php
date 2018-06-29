@@ -10,14 +10,12 @@ class Product extends CI_Controller {
 		parent::__construct();
 
 		$this->viewFolder = "product_v";
-
 		$this->load->model("product_model");
+		$this->load->model("product_image_model");
 	}
 	public function index()
 	{
 		$viewData = new stdClass();
-
-
 // veri tabanından verilerin getirilmesi
 		$items = $this->product_model->get_all(
 			array(), "rank ASC");
@@ -261,13 +259,53 @@ class Product extends CI_Controller {
 
 		$viewData = new stdClass();
 
+// tablodan verilerin getirilmesi
+		$item = $this->product_model->get(
+			array(
+				"id"    => $id,
+			)
+		);
+
 		/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
 		$viewData->viewFolder = $this->viewFolder;
 		$viewData->subViewFolder = "image";
-
+		$viewData->item=$item;
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
 	}
+
+public function image_upload($id)
+{
+	$config["allowed_types"] 	= "jpg|jpeg|png";
+	$config["upload_path"]   	= "uploads/$this->viewFolder/";
+	$this->load->library("upload", $config);
+
+	$upload = $this->upload->do_upload("file");
+
+	if($upload){
+
+		$uploaded_file = $this->upload->data("file_name");
+
+		$this->product_image_model->add(
+			array(
+				"img_url"		=>$uploaded_file,
+				"rank"			=>0,
+				"isActive"		=>1,
+				"createdAt"		=>date("Y-m-d H:i:s"),
+				"product_id"	=>$id
+				));
+
+
+	}else{
+		echo "işlem başarısız";
+	}
+}
+
+
+
+
+
+
 
 
 }
