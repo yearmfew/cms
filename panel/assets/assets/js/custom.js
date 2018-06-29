@@ -1,30 +1,56 @@
 $(document).ready(function () {
 
-    $(".remove-btn").click(function (e) {
+	$(".remove-btn").click(function () { 
+    /*remove-btn : bunu bir sınıf olarak butonumuza ekliyoruz. 
+    bu sınıfın eklendiği butona tıklanınca aşağıdaki kodlar çalışıyor. 
+    burada data_url ile butonun gideceği yerde dinamik oldu. 
+    uyarı vermek için sadece bu sınıfı eklemek yeterli olacak.*/
 
-        var $data_url = $(this).data("url");
+    var $data_url = $(this).data("url");
+	/*burada kullanılan data fonksiyonu a href içinde de kullanılıyor. bu fonksiyon href içindeki data- den sonra 
+	hangi değişkeni verdi isek gidip onun içindeki dveriyi alıyor.*/
 
-        swal({
-            title: 'Emin misiniz?',
-            text: "Bu işlemi geri alamayacaksınız!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Evet, Sil!',
-            cancelButtonText : "Hayır"
-        }).then(function (result) {
-            if (result.value) {
+	swal({
+		title: 'Emin misiniz?',
+		text: "Bu işlemi geri alamayacaksınız!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Evet, Sil!',
+		cancelButtonText : "Hayır"
+	}).then(function (result) {
+        	// evete tıklanmış ise aşağıdaki kodları çalıştır. yani data_url ye git.
+        	if (result.value) {
 
-                window.location.href = $data_url;
-            }
+        		window.location.href = $data_url;
+        	}
         });
 
-
-    })
 
 })
 
 
-// burada kullanılan data fonksiyonu a href içinde de kullanılıyor. bu fonksiyon href içindeki data- den sonra 
-// hangi değişkeni verdi isek gidip onun içindeki dveriyi alıyor.
+	$(".isActive").change(function(){
+
+		var $data = $(this).prop("checked");
+		var $data_url = $(this).data("url");
+
+		if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
+
+			$.post($data_url, { data : $data}, function (response) {
+
+			});
+
+		}
+
+	})
+
+
+
+
+
+
+})
+
+
