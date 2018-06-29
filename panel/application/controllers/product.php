@@ -69,8 +69,27 @@ class Product extends CI_Controller {
 		if($validate){
 
 
-			echo "Kayit İşlemleri başlar...";
-			
+			$insert = $this->product_model->add(
+                array(
+                    "title"         => $this->input->post("title"),
+                    "description"   => $this->input->post("description"),
+                    "url"           => convertToSEO($this->input->post("title")),
+                    "rank"          => 0,
+                    "isActive"      => 1,
+                    "createdAt"     => date("Y-m-d H:i:s")
+                )
+            );
+
+            if($insert){
+
+                echo "kayit işlemi başarılıdır...";
+
+            } else {
+
+                echo "işlem başarısızdır";
+
+            }
+
 		} else {
 
 			$viewData = new stdClass();

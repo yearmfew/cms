@@ -19,7 +19,11 @@ public function get_all()
 	
 }
 
+ public function add($data = array()){
 
+        return $this->db->insert($this->tableName, $data);
+
+    }
 
 
 
