@@ -70,25 +70,23 @@ class Product extends CI_Controller {
 
 
 			$insert = $this->product_model->add(
-                array(
-                    "title"         => $this->input->post("title"),
-                    "description"   => $this->input->post("description"),
-                    "url"           => convertToSEO($this->input->post("title")),
-                    "rank"          => 0,
-                    "isActive"      => 1,
-                    "createdAt"     => date("Y-m-d H:i:s")
-                )
-            );
+				array(
+					"title"         => $this->input->post("title"),
+					"description"   => $this->input->post("description"),
+					"url"           => convertToSEO($this->input->post("title")),
+					"rank"          => 0,
+					"isActive"      => 1,
+					"createdAt"     => date("Y-m-d H:i:s")
+				)
+			);
 
-            if($insert){
+			if($insert){
+				redirect(base_url("product"));
 
-                echo "kayit işlemi başarılıdır...";
+			} else {
 
-            } else {
-
-                echo "işlem başarısızdır";
-
-            }
+				redirect(base_url("product"));
+			}
 
 		} else {
 
@@ -108,6 +106,27 @@ class Product extends CI_Controller {
             // Hata ekranda gösterilir...
 
 	}
+
+    public function update_form($id){
+
+        $viewData = new stdClass();
+
+        /** Tablodan Verilerin Getirilmesi.. */
+        $item = $this->product_model->get(
+            array(
+                "id"    => $id,
+            )
+        );
+        
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "update";
+        $viewData->item = $item;
+
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+
+
+    }
 
 
 
