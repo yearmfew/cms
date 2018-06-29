@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-md-12">
         <h4 class="m-b-lg">
-            Ürünün Fotoğrafları...
+            <?php echo "<b>$item->title</b> fotoğraflarını düzenliyorsunuz"; ?>
         </h4>
     </div><!-- END column -->
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-body">
-                <form action="../api/dropzone" class="dropzone" data-plugin="dropzone" data-options="{ url: '../api/dropzone'}">
+                <form action="<?php echo base_url("product/image_upload"); ?> " class="dropzone" data-plugin="dropzone" data-options="{ url: '<?php echo base_url("product/image_upload"); ?>'}">
                     <div class="dz-message">
-                        <h3 class="m-h-lg">Drop files here or click to upload.</h3>
-                        <p class="m-b-lg text-muted">(This is just a demo dropzone. Selected files are not actually uploaded.)</p>
+                        <h3 class="m-h-lg">Yüklemek istediğiniz resimleri buraya sürükleyiniz.</h3>
+                        <p class="m-b-lg text-muted">veya sadece tıklayın ve resimlerinizi seçin</p>
                     </div>
                 </form>
             </div><!-- .widget-body -->
