@@ -44,41 +44,51 @@ class Product extends CI_Controller {
 	}
 
 
-    public function save(){
+	public function save(){
 
-        $this->load->library("form_validation");
+		$this->load->library("form_validation");
 
 
         // bir formda olmasını istediğimiz kuralları form validation kütüphanesi ile belirleriz.
         // Kurallar yazilir..
-        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+		$this->form_validation->set_rules("title", "Başlık", "required|trim");
 
-        $this->form_validation->set_message(
-            array(
-                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
-            )
-        );
+        // bu da hata mesajlarını düzenlememize yarayan metod. required alanı doldurulmamışsa bu mesajı bas diye 
+        //düzenledik. aslında mesajlar ingilizce olarak gelir. biz ellemezsek ingilizce mesajları ekrana basar. 
+		$this->form_validation->set_message(
+			array(
+				"required"  => "<b>{field}</b> alanı doldurulmalıdır"
+			)
+		);
 
         // Form Validation Calistirilir..
         // TRUE - FALSE
         // eğer yukarıdaki kurallara göre form doldurulmuş ise bu değişken 1 döner değilse 0 döner.
-        $validate = $this->form_validation->run();
+		$validate = $this->form_validation->run();
 
-        if($validate){
+		if($validate){
 
-            echo "Kayit İşlemleri başlar...";
-            
-        } else {
 
-            echo validation_errors();
-        }
+			echo "Kayit İşlemleri başlar...";
+			
+		} else {
+
+			$viewData = new stdClass();
+
+			/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "add";
+			$viewData->form_error = true;
+
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		}
 
         // Başarılı ise
             // Kayit işlemi baslar
         // Başarısız ise
             // Hata ekranda gösterilir...
 
-    }
+	}
 
 
 
