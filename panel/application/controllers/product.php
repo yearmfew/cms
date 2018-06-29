@@ -44,10 +44,45 @@ class Product extends CI_Controller {
 	}
 
 
-public function save()
-{
-	echo "save";
-}
+    public function save(){
+
+        $this->load->library("form_validation");
+
+
+        // bir formda olmasını istediğimiz kuralları form validation kütüphanesi ile belirleriz.
+        // Kurallar yazilir..
+        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+
+        $this->form_validation->set_message(
+            array(
+                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
+            )
+        );
+
+        // Form Validation Calistirilir..
+        // TRUE - FALSE
+        // eğer yukarıdaki kurallara göre form doldurulmuş ise bu değişken 1 döner değilse 0 döner.
+        $validate = $this->form_validation->run();
+
+        if($validate){
+
+            echo "Kayit İşlemleri başlar...";
+            
+        } else {
+
+            echo validation_errors();
+        }
+
+        // Başarılı ise
+            // Kayit işlemi baslar
+        // Başarısız ise
+            // Hata ekranda gösterilir...
+
+    }
+
+
+
+
 
 }
 
