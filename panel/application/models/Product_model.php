@@ -29,7 +29,10 @@ public function __construct()
 
     }
 
-
+public function update($where = array(), $data=array())
+{
+    return $this->db->where($where)->update($this->tableName, $data);
+}
 
 
 }

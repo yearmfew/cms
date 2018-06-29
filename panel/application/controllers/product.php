@@ -107,27 +107,102 @@ class Product extends CI_Controller {
 
 	}
 
-    public function update_form($id){
+	public function update_form($id){
 
-        $viewData = new stdClass();
+		$viewData = new stdClass();
 
-        /** Tablodan Verilerin Getirilmesi.. */
-        $item = $this->product_model->get(
-            array(
-                "id"    => $id,
-            )
-        );
-        
-        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "update";
-        $viewData->item = $item;
+		/** Tablodan Verilerin Getirilmesi.. */
+		$item = $this->product_model->get(
+			array(
+				"id"    => $id,
+			)
+		);
 
-        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+		$viewData->viewFolder = $this->viewFolder;
+		$viewData->subViewFolder = "update";
+		$viewData->item = $item;
+
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
 
-    }
+	}
 
+	public function update($id){
+
+		$this->load->library("form_validation");
+
+
+        // bir formda olmasını istediğimiz kuralları form validation kütüphanesi ile belirleriz.
+        // Kurallar yazilir..
+		$this->form_validation->set_rules("title", "Başlık", "required|trim");
+
+        // bu da hata mesajlarını düzenlememize yarayan metod. required alanı doldurulmamışsa bu mesajı bas diye 
+        //düzenledik. aslında mesajlar ingilizce olarak gelir. biz ellemezsek ingilizce mesajları ekrana basar. 
+		$this->form_validation->set_message(
+			array(
+				"required"  => "<b>{field}</b> alanı doldurulmalıdır"
+			)
+		);
+
+        // Form Validation Calistirilir..
+        // TRUE - FALSE
+        // eğer yukarıdaki kurallara göre form doldurulmuş ise bu değişken 1 döner değilse 0 döner.
+		$validate = $this->form_validation->run();
+
+		if($validate){
+
+
+			$update = $this->product_model->update(
+				array(
+					"id"  => $id
+				),
+
+				array(
+					"title"         => $this->input->post("title"),
+					"description"   => $this->input->post("description"),
+					"url"           => convertToSEO($this->input->post("title")),
+					
+				)
+			);
+
+			if($update){
+				redirect(base_url("product"));
+
+			} else {
+
+				redirect(base_url("product"));
+			}
+
+		} else {
+
+			$viewData = new stdClass();
+
+
+			/** Tablodan Verilerin Getirilmesi.. */
+			$item = $this->product_model->get(
+				array(
+					"id"    => $id,
+				)
+			);
+
+
+
+			/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "add";
+			$viewData->form_error = true;
+			$viewData->item = $item;
+
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		}
+
+        // Başarılı ise
+            // Kayit işlemi baslar
+        // Başarısız ise
+            // Hata ekranda gösterilir...
+
+	}
 
 
 
