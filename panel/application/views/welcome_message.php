@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter what are you doing man...</title>
+	<title>Welcome to CodeIgniter what are you doing man is it senchronized now???... what about this?</title>
 
 	<style type="text/css">
 
