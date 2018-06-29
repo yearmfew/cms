@@ -241,30 +241,33 @@ class Product extends CI_Controller {
 	}
 
 
-   public function rankSetter(){
+	public function rankSetter(){
+		$data = $this->input->post("data");
+		parse_str($data, $order);
+		$items = $order["ord"];
+		foreach ($items as $rank => $id){
+			$this->product_model->update(
+				array(
+					"id"        => $id,
+					"rank !="   => $rank
+				),
+				array(
+					"rank"      => $rank
+				)
+			);
+		}
+	}
+	public function image_form($id){
 
+		$viewData = new stdClass();
 
-        $data = $this->input->post("data");
+		/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+		$viewData->viewFolder = $this->viewFolder;
+		$viewData->subViewFolder = "image";
 
-        parse_str($data, $order);
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
-        $items = $order["ord"];
-
-        foreach ($items as $rank => $id){
-
-            $this->product_model->update(
-                array(
-                    "id"        => $id,
-                    "rank !="   => $rank
-                ),
-                array(
-                    "rank"      => $rank
-                )
-            );
-
-        }
-
-    }
+	}
 
 
 }
