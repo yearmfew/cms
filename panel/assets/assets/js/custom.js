@@ -1,12 +1,18 @@
 $(document).ready(function () {
 
-	$(".remove-btn").click(function () { 
-    /*remove-btn : bunu bir sınıf olarak butonumuza ekliyoruz. 
+
+
+	$(".sortable").sortable();
+
+	 /*remove-btn : bunu bir sınıf olarak butonumuza ekliyoruz. 
     bu sınıfın eklendiği butona tıklanınca aşağıdaki kodlar çalışıyor. 
     burada data_url ile butonun gideceği yerde dinamik oldu. 
     uyarı vermek için sadece bu sınıfı eklemek yeterli olacak.*/
 
-    var $data_url = $(this).data("url");
+    $(".remove-btn").click(function () { 
+
+
+    	var $data_url = $(this).data("url");
 	/*burada kullanılan data fonksiyonu a href içinde de kullanılıyor. bu fonksiyon href içindeki data- den sonra 
 	hangi değişkeni verdi isek gidip onun içindeki dveriyi alıyor.*/
 
@@ -26,26 +32,37 @@ $(document).ready(function () {
         		window.location.href = $data_url;
         	}
         });
-
-
 })
 
+/*
+burada gönderme işlemini bu metod yapıyor. data_url değişkeninde ki linke aldığımız 
+data yani checked değerini yoluyoruz 
+ve sayfayı yenilemeden o metodu çalıştırmış oluyoruz.*/
 
-	$(".isActive").change(function(){
+$(".isActive").change(function(){
 
-		var $data = $(this).prop("checked");
-		var $data_url = $(this).data("url");
+	var $data = $(this).prop("checked");
+	var $data_url = $(this).data("url");
 
-		if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
+	if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
 
-			$.post($data_url, { data : $data}, function (response) {
+		$.post($data_url, { data : $data}, function (response) {
 
-			});
+		});
 
-		}
+	}
+})
 
-	})
+// sortable ile değişiklik yaptığımızda değişikliği algılayan fonksiyon
 
+    $(".sortable").on("sortupdate", function(event, ui){
+
+        var $data = $(this).sortable("serialize");
+        var $data_url = $(this).data("url");
+
+        $.post($data_url, {data : $data}, function(response){})
+
+    })
 
 
 

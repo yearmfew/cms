@@ -15,19 +15,21 @@
 			<?php } else { ?>
 				<table class="table table-hover table-striped">
 					<thead>
+						<th><i class="fa fa-reorder"></i></th>
 						<th>#id</th>
-						<th>url</th>
 						<th>Baslik</th>
+						<th>url</th>
 						<th>Açıklama</th>
 						<th>Durumu</th>
 						<th>İşlemler</th>
 					</thead>
-					<tbody>
+					<tbody class="sortable" data-url ="<?php echo base_url("product/rankSetter"); ?>">
 						<?php foreach ($items as $item) { ?>
-							<tr>
+							<tr id="ord-<?php echo $item->id; ?>">
+								<th><i class="fa fa-reorder"></i></th>
 								<td><?php echo $item->id; ?> </td>
-								<td><?php echo $item->url; ?></td>
 								<td><?php echo $item->title; ?></td>
+								<td><?php echo $item->url; ?></td>
 								<td><?php echo $item->description; ?></td>
 								<td>			
 									<input 
@@ -43,10 +45,11 @@
 								<td>
 									<button
 									data-url="<?php echo base_url("product/delete/$item->id"); ?>"
-									class="btn btn-sm btn-danger btn-outline remove-btn">
+									class="btn btn-xs btn-danger btn-outline remove-btn">
 									<i class="fa fa-trash"></i> Sil
 								</button>
 								<a href="<?php echo base_url("product/update_form/$item->id"); ?> " class="btn btn-xs btn-info btn-outline"><i class="fa fa-pencil-square-o"></i>Düzenle</a>
+								<a href="<?php echo base_url("product/image_form/$item->id"); ?>" class="btn btn-xs btn-dark btn-outline"><i class="fa fa-image"></i> Resimler</a>
 							</td>
 						</tr>
 					<?php } ?>
