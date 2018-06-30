@@ -270,11 +270,18 @@ class Product extends CI_Controller {
 		$viewData->viewFolder = $this->viewFolder;
 		$viewData->subViewFolder = "image";
 		$viewData->item=$item;
+        $viewData->item_images = $this->product_image_model->get_all(
+            array(
+                "product_id" => $id
+            )
+        );
+
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+
 
 	}
 
-public function image_upload($id)
+	public function image_upload($id)
 {
 	$config["allowed_types"] 	= "jpg|jpeg|png";
 	$config["upload_path"]   	= "uploads/$this->viewFolder/";
