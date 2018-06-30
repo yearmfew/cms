@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a7f2a0-3e6a-4f15-85e2-89e4e9daea22" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/panel/application/views/includes/include_script.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/includes/include_script.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/panel/assets/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/panel/assets/assets/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/panel/assets/assets/js/library.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/assets/assets/js/library.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,69 +16,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Product.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
+      <file leaf-file-name="content.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="299" column="40" lean-forward="true" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="40" />
+            <state relative-caret-position="136">
+              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/custom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
               <folding>
-                <element signature="n#index#0;n#Product#0;n#!!top" />
-                <element signature="e#429#483#0#PHP" />
-                <element signature="n#new_form#0;n#Product#0;n#!!top" />
-                <element signature="n#save#0;n#Product#0;n#!!top" />
-                <element signature="e#1554#1667#0#PHP" />
-                <element signature="e#1594#1663#1#PHP" />
-                <element signature="e#1884#2664#0#PHP" />
-                <element signature="e#1914#2239#0#PHP" />
-                <element signature="e#1945#2234#1#PHP" />
-                <element signature="e#2245#2346#0#PHP" />
-                <element signature="e#2299#2346#0#PHP" />
-                <element signature="e#2352#2664#0#PHP" />
-                <element signature="e#2674#2689#0#PHP" />
-                <element signature="n#update_form#0;n#Product#0;n#!!top" />
-                <element signature="e#2946#2977#1#PHP" />
-                <element signature="n#update#0;n#Product#0;n#!!top" />
-                <element signature="e#3758#3871#0#PHP" />
-                <element signature="e#3798#3867#1#PHP" />
-                <element signature="e#4088#4971#0#PHP" />
-                <element signature="e#4118#4391#0#PHP" />
-                <element signature="e#4152#4182#0#PHP" />
-                <element signature="e#4189#4386#0#PHP" />
-                <element signature="e#4397#4498#0#PHP" />
-                <element signature="e#4451#4498#0#PHP" />
-                <element signature="e#4504#4971#0#PHP" />
-                <element signature="e#4599#4668#0#PHP" />
-                <element signature="e#4630#4663#1#PHP" />
-                <element signature="e#4981#4996#0#PHP" />
-                <element signature="n#delete#0;n#Product#0;n#!!top" />
-                <element signature="e#5149#5214#0#PHP" />
-                <element signature="e#5182#5210#1#PHP" />
-                <element signature="e#5220#5319#0#PHP" />
-                <element signature="e#5273#5319#0#PHP" />
-                <element signature="n#isActiveSetter#0;n#Product#0;n#!!top" />
-                <element signature="e#5367#5556#0#PHP" />
-                <element signature="e#5444#5550#0#PHP" />
-                <element signature="e#5473#5501#0#PHP" />
-                <element signature="e#5506#5546#0#PHP" />
-                <element signature="n#rankSetter#0;n#Product#0;n#!!top" />
-                <element signature="e#5687#5875#0#PHP" />
-                <element signature="e#5724#5870#0#PHP" />
-                <element signature="e#5758#5821#0#PHP" />
-                <element signature="e#5827#5865#0#PHP" />
-                <element signature="n#image_form#0;n#Product#0;n#!!top" />
-                <element signature="e#5989#6054#0#PHP" />
-                <element signature="e#6019#6050#1#PHP" />
-                <element signature="e#6810#6844#0#PHP" />
+                <element signature="e#66#324#0" />
+                <element signature="e#365#1048#0" />
+                <element signature="e#413#589#0" />
+                <element signature="e#597#841#0" />
+                <element signature="e#866#1044#0" />
+                <element signature="e#977#1034#0" />
+                <element signature="e#1266#1489#0" />
+                <element signature="e#1415#1487#0" />
+                <element signature="e#1475#1481#0" />
+                <element signature="e#1620#1790#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
+      <file leaf-file-name="library.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/library.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="50" column="103" selection-start-line="50" selection-start-column="103" selection-end-line="50" selection-end-column="103" />
+            <state relative-caret-position="272">
+              <caret line="16" column="46" lean-forward="true" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="include_script.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/panel/application/views/includes/include_script.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -94,8 +78,11 @@
         <option value="$PROJECT_DIR$/panel/application/views/dashboard_v/add/index.php" />
         <option value="$PROJECT_DIR$/panel/application/views/dashboard_v/list/index.php" />
         <option value="$PROJECT_DIR$/panel/application/views/dashboard_v/update/index.php" />
-        <option value="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" />
         <option value="$PROJECT_DIR$/panel/application/controllers/Product.php" />
+        <option value="$PROJECT_DIR$/panel/application/views/includes/include_script.php" />
+        <option value="$PROJECT_DIR$/panel/assets/assets/js/custom.js" />
+        <option value="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" />
+        <option value="$PROJECT_DIR$/panel/assets/assets/js/library.php" />
       </list>
     </option>
   </component>
@@ -146,13 +133,6 @@
               <item name="cms" type="462c0819:PsiDirectoryNode" />
               <item name="panel" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cms" type="462c0819:PsiDirectoryNode" />
-              <item name="panel" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -161,6 +141,14 @@
               <item name="panel" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cms" type="462c0819:PsiDirectoryNode" />
+              <item name="panel" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cms" type="b2602c69:ProjectViewProjectNode" />
@@ -183,10 +171,22 @@
               <item name="cms" type="b2602c69:ProjectViewProjectNode" />
               <item name="cms" type="462c0819:PsiDirectoryNode" />
               <item name="panel" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="product_v" type="462c0819:PsiDirectoryNode" />
-              <item name="list" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cms" type="462c0819:PsiDirectoryNode" />
+              <item name="panel" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cms" type="462c0819:PsiDirectoryNode" />
+              <item name="panel" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cms" type="b2602c69:ProjectViewProjectNode" />
@@ -228,12 +228,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530304557561</updated>
       <workItem from="1530304562785" duration="600000" />
-      <workItem from="1530355170393" duration="4788000" />
+      <workItem from="1530355170393" duration="7373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5388000" />
+    <option name="totallyTimeSpent" value="7973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
@@ -413,13 +413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="50" column="103" selection-start-line="50" selection-start-column="103" selection-end-line="50" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
@@ -473,6 +466,51 @@
             <element signature="e#6019#6050#1#PHP" />
             <element signature="e#6810#6844#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/library.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-947" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
+          <folding>
+            <element signature="e#66#324#0" />
+            <element signature="e#365#1048#0" />
+            <element signature="e#413#589#0" />
+            <element signature="e#597#841#0" />
+            <element signature="e#866#1044#0" />
+            <element signature="e#977#1034#0" />
+            <element signature="e#1266#1489#0" />
+            <element signature="e#1415#1487#0" />
+            <element signature="e#1475#1481#0" />
+            <element signature="e#1620#1790#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/library.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="46" lean-forward="true" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/include_script.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>

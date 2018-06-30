@@ -9,6 +9,7 @@
             <div class="widget-body">
                 <form action="<?php echo base_url("product/image_upload/$item->id"); ?> "
                       class="dropzone"
+                      id="dropzone"
                       data-plugin="dropzone"
                       data-options="{ url: '<?php echo base_url("product/image_upload/$item->id"); ?>'}">
                     <div class="dz-message">

@@ -33,13 +33,12 @@ $(document).ready(function () {
         	}
         });
 })
+	/*
+	burada gönderme işlemini bu metod yapıyor. data_url değişkeninde ki linke aldığımız
+	data yani checked değerini yoluyoruz
+	ve sayfayı yenilemeden o metodu çalıştırmış oluyoruz.*/
 
-/*
-burada gönderme işlemini bu metod yapıyor. data_url değişkeninde ki linke aldığımız 
-data yani checked değerini yoluyoruz 
-ve sayfayı yenilemeden o metodu çalıştırmış oluyoruz.*/
-
-$(".isActive").change(function(){
+	$(".isActive").change(function(){
 
 	var $data = $(this).prop("checked");
 	var $data_url = $(this).data("url");
@@ -53,7 +52,7 @@ $(".isActive").change(function(){
 	}
 })
 
-// sortable ile değişiklik yaptığımızda değişikliği algılayan fonksiyon
+	// sortable ile değişiklik yaptığımızda değişikliği algılayan fonksiyon
 
     $(".sortable").on("sortupdate", function(event, ui){
 
@@ -64,7 +63,13 @@ $(".isActive").change(function(){
 
     })
 
+    var uploadSection = Dropzone.forElement("#dropzone");
 
+    uploadSection.on("complete", function(){
+
+        alert();
+
+    })
 
 
 
