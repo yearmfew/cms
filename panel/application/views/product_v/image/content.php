@@ -47,7 +47,10 @@
                         <tr>
                             <td class="w100 text-center"><?php echo $image->id;?></td>
                             <td class="w100">
-                                <img width="30" src="<?php echo base_url("uploads/{$viewFolder}/$image->img_url"); ?> " alt="" class="img-responsive">
+                                <img width="30"
+                                     src="<?php echo base_url("uploads/{$viewFolder}/$image->img_url");?> "
+                                     alt="<?php echo $image->img_url;?> "
+                                     class="img-responsive">
                             </td>
                             <td><?php echo $image ->img_url; ?> </td>
                             <td class="w100 text-center">

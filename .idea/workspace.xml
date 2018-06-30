@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3a7f2a0-3e6a-4f15-85e2-89e4e9daea22" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/application/models/Product_image_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/models/Product_image_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/application/views/dashboard_v/add/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/dashboard_v/add/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/application/views/dashboard_v/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/dashboard_v/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/application/views/dashboard_v/list/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/dashboard_v/list/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/application/views/dashboard_v/update/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/dashboard_v/update/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +16,8 @@
       <file leaf-file-name="Product.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="715">
-              <caret line="276" column="10" selection-start-line="276" selection-start-column="10" selection-end-line="276" selection-end-column="10" />
+            <state relative-caret-position="367">
+              <caret line="299" column="40" lean-forward="true" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="40" />
               <folding>
                 <element signature="n#index#0;n#Product#0;n#!!top" />
                 <element signature="e#429#483#0#PHP" />
@@ -68,6 +62,7 @@
                 <element signature="e#5724#5870#0#PHP" />
                 <element signature="e#5758#5821#0#PHP" />
                 <element signature="e#5827#5865#0#PHP" />
+                <element signature="n#image_form#0;n#Product#0;n#!!top" />
                 <element signature="e#5989#6054#0#PHP" />
                 <element signature="e#6019#6050#1#PHP" />
                 <element signature="e#6810#6844#0#PHP" />
@@ -79,8 +74,8 @@
       <file leaf-file-name="content.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+            <state relative-caret-position="158">
+              <caret line="50" column="103" selection-start-line="50" selection-start-column="103" selection-end-line="50" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -99,8 +94,8 @@
         <option value="$PROJECT_DIR$/panel/application/views/dashboard_v/add/index.php" />
         <option value="$PROJECT_DIR$/panel/application/views/dashboard_v/list/index.php" />
         <option value="$PROJECT_DIR$/panel/application/views/dashboard_v/update/index.php" />
-        <option value="$PROJECT_DIR$/panel/application/controllers/Product.php" />
         <option value="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" />
+        <option value="$PROJECT_DIR$/panel/application/controllers/Product.php" />
       </list>
     </option>
   </component>
@@ -115,7 +110,7 @@
       <path value="$PROJECT_DIR$/resources/Infinity-v2.0.0/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1260" />
@@ -233,12 +228,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530304557561</updated>
       <workItem from="1530304562785" duration="600000" />
-      <workItem from="1530355170393" duration="3754000" />
+      <workItem from="1530355170393" duration="4788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4354000" />
+    <option name="totallyTimeSpent" value="5388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
@@ -325,6 +320,7 @@
             <element signature="e#5724#5870#0#PHP" />
             <element signature="e#5758#5821#0#PHP" />
             <element signature="e#5827#5865#0#PHP" />
+            <element signature="n#image_form#0;n#Product#0;n#!!top" />
             <element signature="e#5989#6054#0#PHP" />
             <element signature="e#6019#6050#1#PHP" />
             <element signature="e#6810#6844#0#PHP" />
@@ -419,15 +415,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+        <state relative-caret-position="158">
+          <caret line="50" column="103" selection-start-line="50" selection-start-column="103" selection-end-line="50" selection-end-column="103" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="276" column="10" selection-start-line="276" selection-start-column="10" selection-end-line="276" selection-end-column="10" />
+        <state relative-caret-position="367">
+          <caret line="299" column="40" lean-forward="true" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="40" />
           <folding>
             <element signature="n#index#0;n#Product#0;n#!!top" />
             <element signature="e#429#483#0#PHP" />
@@ -472,6 +468,7 @@
             <element signature="e#5724#5870#0#PHP" />
             <element signature="e#5758#5821#0#PHP" />
             <element signature="e#5827#5865#0#PHP" />
+            <element signature="n#image_form#0;n#Product#0;n#!!top" />
             <element signature="e#5989#6054#0#PHP" />
             <element signature="e#6019#6050#1#PHP" />
             <element signature="e#6810#6844#0#PHP" />
