@@ -38,19 +38,21 @@ $(document).ready(function () {
 	data yani checked değerini yoluyoruz
 	ve sayfayı yenilemeden o metodu çalıştırmış oluyoruz.*/
 
-	$(".isActive").change(function(){
+    $(".content-container, .image_list_container").on('change', '.isActive', function(){
 
-	var $data 		= $(this).prop("checked");
-	var $data_url 	= $(this).data("url");
+        var $data = $(this).prop("checked");
+        var $data_url = $(this).data("url");
 
-	if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
+        if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
 
-		$.post($data_url, { data : $data}, function (response) {
+            $.post($data_url, { data : $data}, function (response) {
 
-		});
+            });
 
-	}
-})
+        }
+
+    })
+
 
 		$(".image_list_container").on('change', '.isCover',  function(){
 
