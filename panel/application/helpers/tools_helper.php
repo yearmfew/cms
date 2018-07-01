@@ -9,7 +9,7 @@ function convertToSEO($text){
 
 }
 
-function fileName($id)
+/*function fileName($id)
 {
 		$file = $this->product_image_model->get(
 		array(
@@ -17,4 +17,4 @@ function fileName($id)
 		)
 	);
 		return $fileName = $file->img_url;
-}
+}*/

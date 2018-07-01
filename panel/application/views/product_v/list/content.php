@@ -13,10 +13,10 @@
 					<p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("product/new_form"); ?>" >tıklayınız</a></p>
 				</div>
 			<?php } else { ?>
-				<table class="table table-hover table-striped content-container">
+				<table class="table table-hover table-striped table-bordered content-container">
 					<thead>
-						<th><i class="fa fa-reorder"></i></th>
-						<th>#id</th>
+						<th class="order"><i class="fa fa-reorder"></i></th>
+						<th class="w50">#id</th>
 						<th>Baslik</th>
 						<th>url</th>
 						<th>Açıklama</th>
@@ -26,12 +26,12 @@
 					<tbody class="sortable" data-url ="<?php echo base_url("product/rankSetter"); ?>">
 						<?php foreach ($items as $item) { ?>
 							<tr id="ord-<?php echo $item->id; ?>">
-								<th><i class="fa fa-reorder"></i></th>
+								<th class="order"><i class="fa fa-reorder"></i></th>
 								<td><?php echo $item->id; ?> </td>
 								<td><?php echo $item->title; ?></td>
 								<td><?php echo $item->url; ?></td>
 								<td><?php echo $item->description; ?></td>
-								<td>			
+								<td class="text-center">			
 									<input 
 									data-url = "<?php echo base_url("product/isActiveSetter/$item->id"); ?>"
 									class="isActive"
@@ -42,7 +42,7 @@
 									<?php echo ($item ->isActive) ? "checked" : ""; ?>
 									/>
 								</td>
-								<td>
+								<td class="text-center">
 									<button
 									data-url="<?php echo base_url("product/delete/$item->id"); ?>"
 									class="btn btn-xs btn-danger btn-outline remove-btn">
