@@ -9,7 +9,7 @@ $(document).ready(function () {
     burada data_url ile butonun gideceği yerde dinamik oldu. 
     uyarı vermek için sadece bu sınıfı eklemek yeterli olacak.*/
 
-    $(".remove-btn").click(function () { 
+    $(".content-container, .image_list_container").on('click', '.remove-btn', function () {
 
 
     	var $data_url = $(this).data("url");
@@ -38,88 +38,92 @@ $(document).ready(function () {
 	data yani checked değerini yoluyoruz
 	ve sayfayı yenilemeden o metodu çalıştırmış oluyoruz.*/
 
-    $(".content-container, .image_list_container").on('change', '.isActive', function(){
+	$(".content-container, .image_list_container").on('change', '.isActive', function(){
 
-        var $data = $(this).prop("checked");
-        var $data_url = $(this).data("url");
+		var $data = $(this).prop("checked");
+		var $data_url = $(this).data("url");
 
-        if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
+		if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
 
-            $.post($data_url, { data : $data}, function (response) {
+			$.post($data_url, { data : $data}, function (response) {
 
-            });
-
-        }
-
-    })
-
-
-		$(".image_list_container").on('change', '.isCover',  function(){
-
-	var $data 		= $(this).prop("checked");
-	var $data_url 	= $(this).data("url");
-
-	if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
-
-		$.post($data_url, { data : $data}, function (response) {
-
-			   $(".image_list_container").html(response);
-
-	$('[data-switchery]').each(function(){
-				var $this = $(this),
-						color = $this.attr('data-color') || '#188ae2',
-						jackColor = $this.attr('data-jackColor') || '#ffffff',
-						size = $this.attr('data-size') || 'default'
-
-				new Switchery(this, {
-					color: color,
-					size: size,
-					jackColor: jackColor
-				});
 			});
-		});
 
-	}
-})
+		}
+
+	})
+
+
+	$(".image_list_container").on('change', '.isCover',  function(){
+
+		var $data 		= $(this).prop("checked");
+		var $data_url 	= $(this).data("url");
+
+		if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
+
+			$.post($data_url, { data : $data}, function (response) {
+
+				$(".image_list_container").html(response);
+
+				$('[data-switchery]').each(function(){
+					var $this = $(this),
+					color = $this.attr('data-color') || '#188ae2',
+					jackColor = $this.attr('data-jackColor') || '#ffffff',
+					size = $this.attr('data-size') || 'default'
+
+					new Switchery(this, {
+						color: color,
+						size: size,
+						jackColor: jackColor
+					});
+				});
+				$(".sortable").sortable();
+
+			});
+
+		}
+	})
 
 	// sortable ile değişiklik yaptığımızda değişikliği algılayan fonksiyon
 
-    $(".sortable").on("sortupdate", function(event, ui){
+ $(".content-container, .image_list_container").on("sortupdate", '.sortable',  function(event, ui){
 
-        var $data = $(this).sortable("serialize");
-        var $data_url = $(this).data("url");
+		var $data = $(this).sortable("serialize");
+		var $data_url = $(this).data("url");
 
-        $.post($data_url, {data : $data}, function(response){})
+		$.post($data_url, {data : $data}, function(response){})
 
-    })
+	})
 
 
-    var uploadSection = Dropzone.forElement("#dropzone");
+	var uploadSection = Dropzone.forElement("#dropzone");
 
-    uploadSection.on("complete", function(file){
+	uploadSection.on("complete", function(file){
 
-        var $data_url = $("#dropzone").data("url");
+		var $data_url = $("#dropzone").data("url");
 
-        $.post($data_url, {}, function(response){
+		$.post($data_url, {}, function(response){
 
-            $(".image_list_container").html(response);
+			$(".image_list_container").html(response);
 // image_list_container adlı sınıfı kullandığın yere dropzone dan gelen veriyi yolla.
-	$('[data-switchery]').each(function(){
-				var $this = $(this),
-						color = $this.attr('data-color') || '#188ae2',
-						jackColor = $this.attr('data-jackColor') || '#ffffff',
-						size = $this.attr('data-size') || 'default'
+$('[data-switchery]').each(function(){
+	var $this = $(this),
+	color = $this.attr('data-color') || '#188ae2',
+	jackColor = $this.attr('data-jackColor') || '#ffffff',
+	size = $this.attr('data-size') || 'default'
 
-				new Switchery(this, {
-					color: color,
-					size: size,
-					jackColor: jackColor
-				});
-			});
+	new Switchery(this, {
+		color: color,
+		size: size,
+		jackColor: jackColor
+	});
+});
+$(".sortable").sortable();
 
-        });
 
-    })
+});
+
+	})
 
 
 

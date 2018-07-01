@@ -42,4 +42,6 @@ public function delete($where = array())
 {
     return $this->db->where($where)->delete($this->tableName);
 }
+
+
 }

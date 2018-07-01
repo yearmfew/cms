@@ -7,5 +7,14 @@ function convertToSEO($text){
 
     return strtolower(str_replace($turkce, $convert, $text));
 
+}
 
+function fileName($id)
+{
+		$file = $this->product_image_model->get(
+		array(
+			"id" => $id,
+		)
+	);
+		return $fileName = $file->img_url;
 }
