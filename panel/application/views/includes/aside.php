@@ -61,7 +61,7 @@
       </li>
 
       <li>
-        <a href="javascript:void(0)">
+        <a href="<?php echo base_url("Dashboard"); ?>">
           <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
           <span class="menu-text">Dashboard</span>
         </a>

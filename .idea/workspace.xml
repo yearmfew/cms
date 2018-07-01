@@ -3,15 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a3a7f2a0-3e6a-4f15-85e2-89e4e9daea22" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/application/controllers/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/controllers/product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/panel/application/views/includes/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel/application/views/includes/aside.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/panel/assets/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/panel/assets/assets/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/uploads/product_v/20170901-2111462.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/uploads/product_v/WhatsApp_Image_2018-06-24_at_20_47_08.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/uploads/product_v/kimlik-foto2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/uploads/product_v/kimlik-foto3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/uploads/product_v/kimlik-foto4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel/uploads/product_v/pexels-photo-206622.jpeg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,10 +15,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Product.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Product.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
+            <state relative-caret-position="1819">
               <caret line="335" selection-start-line="335" selection-end-line="335" />
               <folding>
                 <element signature="n#index#0;n#Product#0;n#!!top" />
@@ -81,8 +74,8 @@
       <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="78" column="6" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
+            <state relative-caret-position="833">
+              <caret line="75" column="85" selection-start-line="75" selection-start-column="85" selection-end-line="75" selection-end-column="85" />
               <folding>
                 <element signature="e#66#324#0" />
                 <element signature="e#365#1048#0" />
@@ -90,21 +83,40 @@
                 <element signature="e#597#841#0" />
                 <element signature="e#866#1044#0" />
                 <element signature="e#977#1034#0" />
-                <element signature="e#1051#1232#0" />
-                <element signature="e#1266#1489#0" />
-                <element signature="e#1415#1487#0" />
-                <element signature="e#1475#1481#0" />
-                <element signature="e#1620#1790#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="navbar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/panel/application/views/includes/navbar.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="navbar-rightside.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/panel/application/views/includes/navbar-rightside.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="aside.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/panel/application/views/includes/aside.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customizer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/panel/application/views/includes/customizer.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file leaf-file-name="content.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+            <state relative-caret-position="459">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -136,8 +148,9 @@
         <option value="$PROJECT_DIR$/panel/assets/assets/js/library.php" />
         <option value="$PROJECT_DIR$/panel/application/controllers/Product.php" />
         <option value="$PROJECT_DIR$/panel/application/views/product_v/image/render_elements/image_list_v.php" />
-        <option value="$PROJECT_DIR$/panel/assets/assets/js/custom.js" />
         <option value="$PROJECT_DIR$/panel/application/views/product_v/image/content.php" />
+        <option value="$PROJECT_DIR$/panel/assets/assets/js/custom.js" />
+        <option value="$PROJECT_DIR$/panel/application/views/includes/aside.php" />
       </list>
     </option>
   </component>
@@ -152,7 +165,7 @@
       <path value="$PROJECT_DIR$/resources/Infinity-v2.0.0/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1260" />
@@ -196,6 +209,22 @@
               <item name="panel" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cms" type="462c0819:PsiDirectoryNode" />
+              <item name="panel" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard_v" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cms" type="462c0819:PsiDirectoryNode" />
+              <item name="panel" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cms" type="b2602c69:ProjectViewProjectNode" />
@@ -264,16 +293,16 @@
       <option name="presentableId" value="Default" />
       <updated>1530304557561</updated>
       <workItem from="1530304562785" duration="600000" />
-      <workItem from="1530355170393" duration="11614000" />
+      <workItem from="1530355170393" duration="12827000" />
+      <workItem from="1530434574324" duration="10000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12214000" />
+    <option name="totallyTimeSpent" value="13437000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17890625" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -291,9 +320,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +337,105 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="335" selection-start-line="335" selection-end-line="335" />
+          <folding>
+            <element signature="n#index#0;n#Product#0;n#!!top" />
+            <element signature="e#429#483#0#PHP" />
+            <element signature="n#new_form#0;n#Product#0;n#!!top" />
+            <element signature="n#save#0;n#Product#0;n#!!top" />
+            <element signature="e#1554#1667#0#PHP" />
+            <element signature="e#1594#1663#1#PHP" />
+            <element signature="e#1884#2664#0#PHP" />
+            <element signature="e#1914#2239#0#PHP" />
+            <element signature="e#1945#2234#1#PHP" />
+            <element signature="e#2245#2346#0#PHP" />
+            <element signature="e#2299#2346#0#PHP" />
+            <element signature="e#2352#2664#0#PHP" />
+            <element signature="e#2674#2689#0#PHP" />
+            <element signature="n#update_form#0;n#Product#0;n#!!top" />
+            <element signature="e#2946#2977#1#PHP" />
+            <element signature="n#update#0;n#Product#0;n#!!top" />
+            <element signature="e#3758#3871#0#PHP" />
+            <element signature="e#3798#3867#1#PHP" />
+            <element signature="e#4088#4971#0#PHP" />
+            <element signature="e#4118#4391#0#PHP" />
+            <element signature="e#4152#4182#0#PHP" />
+            <element signature="e#4189#4386#0#PHP" />
+            <element signature="e#4397#4498#0#PHP" />
+            <element signature="e#4451#4498#0#PHP" />
+            <element signature="e#4504#4971#0#PHP" />
+            <element signature="e#4599#4668#0#PHP" />
+            <element signature="e#4630#4663#1#PHP" />
+            <element signature="e#4981#4996#0#PHP" />
+            <element signature="n#delete#0;n#Product#0;n#!!top" />
+            <element signature="e#5149#5214#0#PHP" />
+            <element signature="e#5182#5210#1#PHP" />
+            <element signature="e#5220#5319#0#PHP" />
+            <element signature="e#5273#5319#0#PHP" />
+            <element signature="n#isActiveSetter#0;n#Product#0;n#!!top" />
+            <element signature="e#5367#5556#0#PHP" />
+            <element signature="e#5444#5550#0#PHP" />
+            <element signature="e#5473#5501#0#PHP" />
+            <element signature="e#5506#5546#0#PHP" />
+            <element signature="n#rankSetter#0;n#Product#0;n#!!top" />
+            <element signature="e#5687#5875#0#PHP" />
+            <element signature="e#5724#5870#0#PHP" />
+            <element signature="e#5758#5821#0#PHP" />
+            <element signature="e#5827#5865#0#PHP" />
+            <element signature="e#5989#6054#0#PHP" />
+            <element signature="e#6019#6050#1#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="85" selection-start-line="75" selection-start-column="85" selection-end-line="75" selection-end-column="85" />
+          <folding>
+            <element signature="e#66#324#0" />
+            <element signature="e#365#1048#0" />
+            <element signature="e#413#589#0" />
+            <element signature="e#597#841#0" />
+            <element signature="e#866#1044#0" />
+            <element signature="e#977#1034#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/navbar.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/navbar-rightside.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/customizer.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/render_elements/image_list_v.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/aside.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5304">
@@ -356,10 +484,8 @@
             <element signature="e#5724#5870#0#PHP" />
             <element signature="e#5758#5821#0#PHP" />
             <element signature="e#5827#5865#0#PHP" />
-            <element signature="n#image_form#0;n#Product#0;n#!!top" />
             <element signature="e#5989#6054#0#PHP" />
             <element signature="e#6019#6050#1#PHP" />
-            <element signature="e#6810#6844#0#PHP" />
           </folding>
         </state>
       </provider>
@@ -368,19 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="73" lean-forward="true" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#5#0#PHP" />
-            <element signature="n#head#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-            <element signature="e#399#518#0#HTML" />
-            <element signature="e#523#601#0#HTML" />
-            <element signature="e#607#791#0#HTML" />
-            <element signature="e#799#1039#0#HTML" />
-            <element signature="e#1048#1077#0#HTML" />
-            <element signature="e#1089#1235#0#HTML" />
-            <element signature="e#1249#1329#0#HTML" />
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -388,19 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#5#0#PHP" />
-            <element signature="n#head#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-            <element signature="e#399#518#0#HTML" />
-            <element signature="e#523#601#0#HTML" />
-            <element signature="e#607#791#0#HTML" />
-            <element signature="e#799#1039#0#HTML" />
-            <element signature="e#1048#1077#0#HTML" />
-            <element signature="e#1089#1235#0#HTML" />
-            <element signature="e#1249#1329#0#HTML" />
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -468,43 +568,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/render_elements/image_list_v.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="78" column="6" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
-          <folding>
-            <element signature="e#66#324#0" />
-            <element signature="e#365#1048#0" />
-            <element signature="e#413#589#0" />
-            <element signature="e#597#841#0" />
-            <element signature="e#866#1044#0" />
-            <element signature="e#977#1034#0" />
-            <element signature="e#1051#1232#0" />
-            <element signature="e#1266#1489#0" />
-            <element signature="e#1415#1487#0" />
-            <element signature="e#1475#1481#0" />
-            <element signature="e#1620#1790#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/panel/application/controllers/Product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
+        <state relative-caret-position="1819">
           <caret line="335" selection-start-line="335" selection-end-line="335" />
           <folding>
             <element signature="n#index#0;n#Product#0;n#!!top" />
@@ -553,6 +619,51 @@
             <element signature="e#5989#6054#0#PHP" />
             <element signature="e#6019#6050#1#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/render_elements/image_list_v.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/product_v/image/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/assets/assets/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="75" column="85" selection-start-line="75" selection-start-column="85" selection-end-line="75" selection-end-column="85" />
+          <folding>
+            <element signature="e#66#324#0" />
+            <element signature="e#365#1048#0" />
+            <element signature="e#413#589#0" />
+            <element signature="e#597#841#0" />
+            <element signature="e#866#1044#0" />
+            <element signature="e#977#1034#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/customizer.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/navbar.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/navbar-rightside.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel/application/views/includes/aside.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
         </state>
       </provider>
     </entry>

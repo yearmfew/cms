@@ -41,9 +41,4 @@
 				</div><!-- .tab-pane -->
 			</div>
 		</div><!-- .customizer-taps -->
-		<hr class="m-0">
-		<div class="customizer-reset">
-			<button id="customizer-reset-btn" class="btn btn-block btn-outline btn-primary">Reset</button>
-			<a href="https://themeforest.net/item/infinity-responsive-web-app-kit/16230780" class="m-t-sm btn btn-block btn-danger">Buy Now</a>
-		</div>
 	</div>

@@ -73,6 +73,19 @@ $(document).ready(function () {
         $.post($data_url, {}, function(response){
 
             $(".image_list_container").html(response);
+// image_list_container adlı sınıfı kullandığın yere dropzone dan gelen veriyi yolla.
+	$('[data-switchery]').each(function(){
+				var $this = $(this),
+						color = $this.attr('data-color') || '#188ae2',
+						jackColor = $this.attr('data-jackColor') || '#ffffff',
+						size = $this.attr('data-size') || 'default'
+
+				new Switchery(this, {
+					color: color,
+					size: size,
+					jackColor: jackColor
+				});
+			});
 
         });
 
