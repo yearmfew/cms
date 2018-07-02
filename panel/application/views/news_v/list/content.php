@@ -6,23 +6,26 @@
 		</h4>
 	</div><!-- END column -->
 
-	<div class="col-md-12">
+	<div class="col-md-12 col-sm-12">
 		<div class="widget p-lg">
 			<?php if (empty($items)) { ?>
 				<div class="alert alert-info text-center">
 					<p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("news/new_form"); ?>" >tıklayınız</a></p>
 				</div>
 			<?php } else { ?>
+				<div class="table-responsive">
+					
+				
 				<table class="table table-hover table-striped table-bordered content-container">
 					<thead>
 						<th class="order"><i class="fa fa-reorder"></i></th>
 						<th class="w50">#id</th>
-						<th>Baslik</th>
-						<th>url</th>
-						<th>Açıklama</th>
+						<th class="w150">Baslik</th>
+						<!-- <th>url</th> -->
+						<th class="w250">Açıklama</th>
 						<th>Haber Türü</th>
-						<th>Görsel</th>						
-						<th>Durumu</th>
+						<th class="w100">Görsel</th>						
+						<th class="w50">Durumu</th>
 						<th>İşlemler</th>
 					</thead>
 					<tbody class="sortable" data-url ="<?php echo base_url("news/rankSetter"); ?>">
@@ -30,10 +33,20 @@
 							<tr id="ord-<?php echo $item->id; ?>">
 								<th class="order"><i class="fa fa-reorder"></i></th>
 								<td><?php echo $item->id; ?> </td>
-								<td><?php echo $item->title; ?></td>
-								<td><?php echo $item->url; ?></td>
-								<td><?php echo $item->description; ?></td>
-								<td><?php echo $item->news_type; ?></td>
+								<td ><?php echo $item->title; ?></td>
+								<!-- <td><?php echo $item->url; ?></td> -->
+							<td ><?php echo $item->description; ?></td>								
+								<td class="order"> <?php if ($item->news_type == "image"){ ?>
+									<i class="fa fa-image"> </i>									
+								<?php } elseif ($item->news_type == "video") {
+								 ?>
+
+								 <i class="fa fa-video-camera"> </i>
+								<?php } ?>
+								</td>
+								
+
+
 								<td>   
 
 							        <?php if($item->news_type == "image") { ?>
@@ -83,6 +96,7 @@
 					</tbody>
 				</table>
 			<?php } ?>
+			</div>
 		</div><!-- .widget -->
 	</div><!-- END column -->
 </div>
