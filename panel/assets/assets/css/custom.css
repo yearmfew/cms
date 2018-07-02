@@ -16,7 +16,9 @@ td p{
 	text-align: center;
 }
 
-
+tr td{
+    text-align:center;
+}
 .order{
     text-align: center;
   vertical-align: middle !important;
