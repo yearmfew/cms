@@ -34,32 +34,55 @@
 								<td><?php echo $item->url; ?></td>
 								<td><?php echo $item->description; ?></td>
 								<td><?php echo $item->news_type; ?></td>
-								<td><?php echo "görsel gelecek"; ?></td>
-								<td class="text-center">			
-									<input 
-									data-url = "<?php echo base_url("news/isActiveSetter/$item->id"); ?>"
-									class="isActive"
-									type="checkbox" 
-									data-size="small"
-									data-switchery 
-									data-color="#10c469" 
-									<?php echo ($item ->isActive) ? "checked" : ""; ?>
-									/>
-								</td>
-								<td class="text-center">
-									<button
-									data-url="<?php echo base_url("news/delete/$item->id"); ?>"
-									class="btn btn-xs btn-danger btn-outline remove-btn">
-									<i class="fa fa-trash"></i> Sil
-								</button>
-								<a href="<?php echo base_url("news/update_form/$item->id"); ?> " class="btn btn-xs btn-info btn-outline"><i class="fa fa-pencil-square-o"></i>Düzenle</a>
-						
+								<td>   
+
+							        <?php if($item->news_type == "image") { ?>
+
+                                        <img width="100" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
+                                             alt=""
+                                             class="img-rounded">
+
+                                    <?php } else if($item->news_type == "video") { ?>
+
+                                        <iframe
+                                            width="100"
+                                            src="<?php echo $item->video_url; ?>"
+                                            frameborder="0"
+                                            gesture="media"
+                                            allow="encrypted-media"
+                                            allowfullscreen>
+
+                                        </iframe>
+
+                                    <?php } ?>
+
+
 							</td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		<?php } ?>
-	</div><!-- .widget -->
-</div><!-- END column -->
+									<td class="text-center">			
+										<input 
+										data-url = "<?php echo base_url("news/isActiveSetter/$item->id"); ?>"
+										class="isActive"
+										type="checkbox" 
+										data-size="small"
+										data-switchery 
+										data-color="#10c469" 
+										<?php echo ($item ->isActive) ? "checked" : ""; ?>
+										/>
+									</td>
+									<td class="text-center">
+										<button
+										data-url="<?php echo base_url("news/delete/$item->id"); ?>"
+										class="btn btn-xs btn-danger btn-outline remove-btn">
+										<i class="fa fa-trash"></i> Sil
+									</button>
+									<a href="<?php echo base_url("news/update_form/$item->id"); ?> " class="btn btn-xs btn-info btn-outline"><i class="fa fa-pencil-square-o"></i>Düzenle</a>
+
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			<?php } ?>
+		</div><!-- .widget -->
+	</div><!-- END column -->
 </div>
