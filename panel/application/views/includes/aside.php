@@ -61,7 +61,7 @@
       </li>
 
       <li>
-        <a href="javascript:void(0)">
+        <a href="<?php echo base_url("Dashboard"); ?>">
           <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
           <span class="menu-text">Dashboard</span>
         </a>
@@ -88,7 +88,7 @@
       </li>
 
       <li>
-        <a href="javascript:void(0)" class="submenu-toggle">
+        <a href="javascript:void(0)" >
           <i class="menu-icon zmdi zmdi-layers zmdi-hc-lg"></i>
           <span class="menu-text">Slider</span>
         </a>
@@ -100,45 +100,45 @@
         </a>
       </li>
       <li>
-        <a href="javascript:void(0)" class="submenu-toggle">
+        <a href="<?php echo base_url("news"); ?>" >
           <i class="menu-icon fa fa-newspaper-o"></i>
           <span class="menu-text">Haberler</span>
         </a>
       </li>
       <li>
-        <a href="javascript:void(0)" class="submenu-toggle">
+        <a href="javascript:void(0)" >
           <i class="menu-icon fa fa-graduation-cap"></i>
           <span class="menu-text">Eğitimler</span>
         </a>
       </li>
       <li>
-        <a href="javascript:void(0)" class="submenu-toggle">
+        <a href="javascript:void(0)" >
          <i class="menu-icon zmdi zmdi-check zmdi-hc-lg"></i>
          <span class="menu-text">Referanslar</span>
        </a>
      </li>
 
      <li>
-      <a href="javascript:void(0)" class="submenu-toggle">
+      <a href="javascript:void(0)" >
         <i class="menu-icon zmdi zmdi-puzzle-piece zmdi-hc-lg"></i>
         <span class="menu-text">Markalar</span>
       </a>
     </li>
     <li>
-      <a href="javascript:void(0)" class="submenu-toggle">
+      <a href="javascript:void(0)" >
        <i class="menu-icon fa fa-user-secret"></i>
        <span class="menu-text">Kullanıcılar</span>
      </a>
    </li>
    <li>
-    <a href="javascript:void(0)" class="submenu-toggle">
+    <a href="javascript:void(0)" >
      <i class="menu-icon fa fa-users"></i>
      <span class="menu-text">Aboneler</span>
    </a>
  </li>
 
  <li>
-  <a href="javascript:void(0)" class="submenu-toggle">
+  <a href="javascript:void(0)" >
    <i class="menu-icon zmdi zmdi-lamp zmdi-hc-lg"></i>
    <span class="menu-text">Popup Hizmeti</span>
  </a>

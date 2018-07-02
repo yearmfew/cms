@@ -3,3 +3,41 @@
     color : #ff5b5b;
     font-style: italic;
 }
+td{
+vertical-align: middle !important;
+}
+
+th {
+	text-align: center;
+}
+
+td p{
+    vertical-align: middle !important;
+	text-align: center;
+}
+
+
+.order{
+    text-align: center;
+  vertical-align: middle !important;
+    width: 50px;
+}
+.w50{
+    width: 50px;
+}
+.w100{
+    width: 100px;
+}
+.w150{
+    width: 150px;
+}
+.w250{
+    width:250px;
+}
+
+.sortable{
+    cursor:move;
+}
+.video_url_container{
+    display:none;
+}
