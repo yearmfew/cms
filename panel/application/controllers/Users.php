@@ -155,6 +155,98 @@ class Users extends CI_Controller
 
         $this->load->library("form_validation");
 
+        $oldUser = $this->user_model->get(array(
+            "id" =>$id
+        ));
+
+        if($oldUser->user_name != $this->input->post("user_name")){
+            $this->form_validation->set_rules("user_name", "Kullanıcı Adı", "required|trim");
+
+        }
+
+        if($oldUser->email != $this->input->post("email")){
+        $this->form_validation->set_rules("email", "E-mail", "required|trim|valid_email");
+            
+        }
+
+
+        $this->form_validation->set_rules("full_name", "Ad Soyad", "required|trim");
+
+
+        $this->form_validation->set_message(
+            array(
+                "required"      =>"<b>{field}</b> alanı doldurulmalıdır",
+                "valid_email"   =>"lütfen geçerli bir E-posta adresi giriniz",
+                "is_unique"     =>"<b>{field}</b> daha önceden kullanılmıştır.."             
+
+            )
+        );
+
+        // Form Validation Calistirilir..
+        $validate = $this->form_validation->run();
+
+        if($validate){
+
+
+
+            $insert = $this->user_model->update(array("id" => $id),
+                array(
+                    "user_name"     => $this->input->post("user_name"),
+                    "full_name"     => $this->input->post("full_name"),
+                    "email"         => $this->input->post("email"),
+                       
+                )
+            );
+
+                // TODO Alert sistemi eklenecek...
+            if($insert){
+
+                $alert = array(
+                    "title" => "İşlem Başarılı",
+                    "text" => "Kullanıcı başarılı bir şekilde güncellendi",
+                    "type"  => "success"
+                );
+
+            } else {
+
+                $alert = array(
+                    "title" => "İşlem Başarısız",
+                    "text" => "Güncelleme sırasında bir problem oluştu",
+                    "type"  => "error"
+                );
+            }
+
+
+            $this->session->set_flashdata("alert", $alert);
+
+            redirect(base_url("users"));
+            die();
+
+
+        }  else {
+
+            $viewData = new stdClass();
+
+            /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+            $viewData->viewFolder = $this->viewFolder;
+            $viewData->subViewFolder = "update";
+            $viewData->form_error = true;
+            $viewData->item = $this->user_model->get(
+                array(
+                    "id"    => $id,
+                )
+            );
+
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+        }
+
+    }
+
+
+    public function update_($id){
+
+        $this->load->library("form_validation");
+
         // Kurallar yazilir..
 
         $this->form_validation->set_rules("title", "Başlık", "required|trim");

@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Ad Soyad Adı</label>
+                        <label>Ad Soyad </label>
                         <input class="form-control" placeholder="Adınızı ve Soyadınızı giriniz" 
                         value="<?php echo isset($form_error) ? set_value("full_name") : ""; ?>"
                         name="full_name">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>E-mail Adresi:</label>
+                        <label>E-mail Adresi</label>
                         <input class="form-control"    value="<?php echo isset($form_error) ? set_value("email") : ""; ?>" type="email" placeholder="E-mail Adresinizi Giriniz" name="email">
                         <?php if(isset($form_error)){ ?>
                             <small class="pull-right input-form-error"> <?php echo form_error("email"); ?></small>
