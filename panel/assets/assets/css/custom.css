@@ -6,9 +6,17 @@
 td{
 vertical-align: middle !important;
 }
+td p{
+vertical-align: middle !important;
+}
 th {
 	text-align: center;
 }
+
+th p{
+	text-align: center;
+}
+
 .order{
     text-align: center;
     width: 50px;

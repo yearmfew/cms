@@ -1,23 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class News extends CI_Controller {
 
 	public $viewFolder = "";
+	public $conrollerName = "";
 
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->viewFolder = "product_v";
-		$this->load->model("product_model");
-		$this->load->model("product_image_model");
+		$this->viewFolder = "news_v";
+		$this->controllerName = "news";
+		$this->load->model("news_model");
 	}
 	public function index()
 	{
 		$viewData = new stdClass();
 // veri tabanından verilerin getirilmesi
-		$items = $this->product_model->get_all(
+		$items = $this->news_model->get_all(
 			array(), "rank ASC");
 
 // view e gönderilecek değişkenlerin belirlenmesi
@@ -25,6 +26,7 @@ class Product extends CI_Controller {
 		$viewData ->viewFolder 		= $this->viewFolder;
 		$viewData ->subViewFolder 	= "list";
 		$viewData ->items 			= $items;
+		$viewData ->controllerName  =$this->controllerName;
 
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 	}
@@ -43,86 +45,89 @@ class Product extends CI_Controller {
 	}
 
 
-    public function save(){
+	public function save(){
 
-        $this->load->library("form_validation");
+		$this->load->library("form_validation");
 
         // Kurallar yazilir..
-        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+		$this->form_validation->set_rules("title", "Başlık", "required|trim");
 
-        $this->form_validation->set_message(
-            array(
-                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
-            )
-        );
+		$this->form_validation->set_message(
+			array(
+				"required"  => "<b>{field}</b> alanı doldurulmalıdır"
+			)
+		);
 
         // Form Validation Calistirilir..
         // TRUE - FALSE
-        $validate = $this->form_validation->run();
+		$validate = $this->form_validation->run();
 
         // Monitör Askısı
         // monitor-askisi
 
-        if($validate){
+		if($validate){
 
-            $insert = $this->product_model->add(
-                array(
-                    "title"         => $this->input->post("title"),
-                    "description"   => $this->input->post("description"),
-                    "url"           => convertToSEO($this->input->post("title")),
-                    "rank"          => 0,
-                    "isActive"      => 1,
-                    "createdAt"     => date("Y-m-d H:i:s")
-                )
-            );
+			$insert = $this->news_model->add(
+				array(
+					"title"         => $this->input->post("title"),
+					"description"   => $this->input->post("description"),
+					"url"           => convertToSEO($this->input->post("title")),
+					"news_type"  	=> 0,
+					"img_url"		=>"null",
+					"video_url"		=>"null",
+					"rank"          => 0,
+					"isActive"      => 1,
+					"createdAt"     => date("Y-m-d H:i:s")
+				)
+			);
 
             // TODO Alert sistemi eklenecek...
-            if($insert){
+			if($insert){
 
-                $alert = array(
-                    "title" => "Tebrikler...",
-                    "text" => "İşleminiz başarılı",
-                    "type"  => "success"
-                );
+				$alert = array(
+					"title" => "Tebrikler...",
+					"text" => "İşleminiz başarılı",
+					"type"  => "success"
+				);
 
-            } else {
+			} else {
 
-                $alert = array(
-                    "title" => "ooppss",
-                    "text" => "Bir sorun oluştu",
-                    "type"  => "error"
-                );
-            }
+				$alert = array(
+					"title" => "ooppss",
+					"text" => "Bir sorun oluştu",
+					"type"  => "error"
+				);
+			}
 
             // İşlemin Sonucunu Session'a yazma işlemi...
-            $this->session->set_flashdata("alert", $alert);
+			$this->session->set_flashdata("alert", $alert);
 
-            redirect(base_url("product"));
+			redirect(base_url("news"));
 
-        } else {
+		} else {
 
-            $viewData = new stdClass();
+			$viewData = new stdClass();
 
-            /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-            $viewData->viewFolder = $this->viewFolder;
-            $viewData->subViewFolder = "add";
-            $viewData->form_error = true;
+			/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "add";
+			$viewData->form_error = true;
 
-            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-        }
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		}
 
         // Başarılı ise
             // Kayit işlemi baslar
         // Başarısız ise
             // Hata ekranda gösterilir...
 
-    }
+	}
 	public function update_form($id){
 
 		$viewData = new stdClass();
 
 		/** Tablodan Verilerin Getirilmesi.. */
-		$item = $this->product_model->get(
+		$item = $this->news_model->get(
 			array(
 				"id"    => $id,
 			)
@@ -163,7 +168,7 @@ class Product extends CI_Controller {
 		if($validate){
 
 
-			$update = $this->product_model->update(
+			$update = $this->news_model->update(
 				array(
 					"id"  => $id
 				),
@@ -171,32 +176,34 @@ class Product extends CI_Controller {
 				array(
 					"title"         => $this->input->post("title"),
 					"description"   => $this->input->post("description"),
-					"url"           => convertToSEO($this->input->post("title")),
+					"img_url"       => convertToSEO($this->input->post("title")),
+					"video_url"     => convertToSEO($this->input->post("title")),
 					
+
 				)
 			);
 
-		       if($update){
+			if($update){
 
-                $alert = array(
-                    "title" => "Tebrikler...",
-                    "text" => "İşleminiz başarılı",
-                    "type"  => "success"
-                );
+				$alert = array(
+					"title" => "Tebrikler...",
+					"text" => "İşleminiz başarılı",
+					"type"  => "success"
+				);
 
-            } else {
+			} else {
 
-                $alert = array(
-                    "title" => "ooppss",
-                    "text" => "Bir sorun oluştu",
-                    "type"  => "error"
-                );
-            }
+				$alert = array(
+					"title" => "ooppss",
+					"text" => "Bir sorun oluştu",
+					"type"  => "error"
+				);
+			}
 
             // İşlemin Sonucunu Session'a yazma işlemi...
-            $this->session->set_flashdata("alert", $alert);
+			$this->session->set_flashdata("alert", $alert);
 
-            redirect(base_url("product"));
+			redirect(base_url("news"));
 
 		} else {
 
@@ -204,7 +211,7 @@ class Product extends CI_Controller {
 
 
 			/** Tablodan Verilerin Getirilmesi.. */
-			$item = $this->product_model->get(
+			$item = $this->news_model->get(
 				array(
 					"id"    => $id,
 				)
@@ -229,34 +236,34 @@ class Product extends CI_Controller {
 	public function delete($id)
 	{
 
-		$delete = $this->product_model->delete(
+		$delete = $this->news_model->delete(
 			array(
 				"id" => $id,
 			)
 		);
 
 
-       if($delete){
+		if($delete){
 
-                $alert = array(
-                    "title" => "Tebrikler...",
-                    "text" => "İşleminiz başarılı",
-                    "type"  => "success"
-                );
+			$alert = array(
+				"title" => "Tebrikler...",
+				"text" => "İşleminiz başarılı",
+				"type"  => "success"
+			);
 
-            } else {
+		} else {
 
-                $alert = array(
-                    "title" => "ooppss",
-                    "text" => "Bir sorun oluştu",
-                    "type"  => "error"
-                );
-            }
+			$alert = array(
+				"title" => "ooppss",
+				"text" => "Bir sorun oluştu",
+				"type"  => "error"
+			);
+		}
 
             // İşlemin Sonucunu Session'a yazma işlemi...
-            $this->session->set_flashdata("alert", $alert);
+		$this->session->set_flashdata("alert", $alert);
 
-            redirect(base_url("product"));
+		redirect(base_url("news"));
 
 	}
 
@@ -265,7 +272,7 @@ class Product extends CI_Controller {
 		if($id){
 			$isActive = ($this->input->post("data") === "true") ? 1 : 0;
 
-			$this->product_model->update(array(
+			$this->news_model->update(array(
 				"id"  => $id
 			),
 			array(
@@ -281,7 +288,7 @@ class Product extends CI_Controller {
 		if($id){
 			$isActive = ($this->input->post("data") === "true") ? 1 : 0;
 
-			$this->product_image_model->update(array(
+			$this->news_image_model->update(array(
 				"id"  => $id
 			),
 			array(
@@ -346,7 +353,7 @@ class Product extends CI_Controller {
 		parse_str($data, $order);
 		$items = $order["ord"];
 		foreach ($items as $rank => $id){
-			$this->product_model->update(
+			$this->news_model->update(
 				array(
 					"id"        => $id,
 					"rank !="   => $rank
@@ -390,7 +397,7 @@ class Product extends CI_Controller {
 		$viewData = new stdClass();
 
 // tablodan verilerin getirilmesi
-		$item = $this->product_model->get(
+		$item = $this->news_model->get(
 			array(
 				"id"    => $id,
 			)
