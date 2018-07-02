@@ -7,7 +7,7 @@
   <div class="col-md-12">
     <div class="widget">
         <div class="widget-body">
-            <form action="<?php echo base_url("news/save"); ?>" method="post">
+            <form action="<?php echo base_url("news/save"); ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Başlık</label>
                     <input class="form-control" placeholder="Başlık" name="title">
@@ -20,7 +20,7 @@
                 <textarea name="description" class="m-0" data-plugin="summernote" data-options="{height: 250}"></textarea>
             </div>
             <div class="form-group">
-                <label>Habern Türü</label>
+                <label>Haberin Türü</label>
                 <div id="control-demo-6 " >
                     <select class="form-control news_type_select" name="news_type">
                         <option value="image">Resim</option>
