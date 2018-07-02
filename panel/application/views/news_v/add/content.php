@@ -22,18 +22,18 @@
             <div class="form-group">
                 <label>Habern Türü</label>
                 <div id="control-demo-6 " >
-                    <select class="form-control" name="news_type">
+                    <select class="form-control news_type_select" name="news_type">
                         <option value="image">Resim</option>
                         <option value="video">Video</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group image_upload_container">
                 <label>Resim Yükle</label>
                 <input type="file" name="img_url" class="form-control">
             </div>
 
-            <div class="form-group">
+            <div class="form-group video_url_container">
                 <label>Video Url</label>
                 <input class="form-control" placeholder="Video linkini giriniz" name="video_url">
                 <?php if(isset($form_error)){ ?> <!--  Eğer bir hata varsa mesaj yazdırıyoruz -->
