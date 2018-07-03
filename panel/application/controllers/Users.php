@@ -13,6 +13,10 @@ class Users extends CI_Controller
 
         $this->load->model("user_model");
 
+        if (!get_active_user()) {
+            redirect(base_url("login"));
+        }
+
     }
 
     public function index(){
@@ -49,9 +53,6 @@ class Users extends CI_Controller
         $this->load->library("form_validation");
 
         // Kurallar yazilir..
-
-
-
         $this->form_validation->set_rules("user_name", "Kullanıcı Adı", "required|trim|is_unique[users.user_name]");
         $this->form_validation->set_rules("full_name", "Ad Soyad", "required|trim");
         $this->form_validation->set_rules("email", "E-mail", "required|trim|valid_email|is_unique[users.email]");
@@ -151,6 +152,29 @@ class Users extends CI_Controller
     }
 
 
+    public function update_password_form($id){
+
+        $viewData = new stdClass();
+
+        /** Tablodan Verilerin Getirilmesi.. */
+        $item = $this->user_model->get(
+            array(
+                "id"    => $id,
+            )
+        );
+        
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "password";
+        $viewData->item = $item;
+
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+
+
+    }
+
+
+
     public function update($id){
 
         $this->load->library("form_validation");
@@ -165,7 +189,7 @@ class Users extends CI_Controller
         }
 
         if($oldUser->email != $this->input->post("email")){
-        $this->form_validation->set_rules("email", "E-mail", "required|trim|valid_email");
+            $this->form_validation->set_rules("email", "E-mail", "required|trim|valid_email");
             
         }
 
@@ -194,7 +218,7 @@ class Users extends CI_Controller
                     "user_name"     => $this->input->post("user_name"),
                     "full_name"     => $this->input->post("full_name"),
                     "email"         => $this->input->post("email"),
-                       
+
                 )
             );
 
@@ -242,111 +266,54 @@ class Users extends CI_Controller
 
     }
 
-
-    public function update_($id){
+    public function update_password($id){
 
         $this->load->library("form_validation");
 
-        // Kurallar yazilir..
-
-        $this->form_validation->set_rules("title", "Başlık", "required|trim");
-
+        $this->form_validation->set_rules("password", "Şifre", "required|trim|min_length[6]|max_length[8]");
+        $this->form_validation->set_rules("re_password", "Şifre Tekrar", "required|trim|min_length[6]|max_length[8]|matches[password]");
         $this->form_validation->set_message(
             array(
-                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
+                "required"      =>"<b>{field}</b> alanı doldurulmalıdır",        
+                "matches"       =>"<b>{field}</b> girdiğiniz şifreler birbiri ile uyuşmuyor",
+                "min_length"    =>"Şifreniz 6 karakterden az olmamalıdır",
+                "max_length"    =>"Şifreniz 8 karakterden fazla olmamalıdır"
             )
         );
-
         // Form Validation Calistirilir..
         $validate = $this->form_validation->run();
 
         if($validate){
-
-            // Upload Süreci...
-            if($_FILES["img_url"]["name"] !== "") {
-
-                $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
-
-                $config["allowed_types"] = "jpg|jpeg|png";
-                $config["upload_path"] = "uploads/$this->viewFolder/";
-                $config["file_name"] = $file_name;
-
-                $this->load->library("upload", $config);
-
-                $upload = $this->upload->do_upload("img_url");
-
-                if ($upload) {
-
-                    $uploaded_file = $this->upload->data("file_name");
-
-                    $data = array(
-                        "title" => $this->input->post("title"),
-                        "description" => $this->input->post("description"),
-                        "url" => convertToSEO($this->input->post("title")),
-                        "img_url" => $uploaded_file,
-                    );
-
-                } else {
-
-                    $alert = array(
-                        "title" => "İşlem Başarısız",
-                        "text" => "Görsel yüklenirken bir problem oluştu",
-                        "type" => "error"
-                    );
-
-                    $this->session->set_flashdata("alert", $alert);
-
-                    redirect(base_url("users/update_form/$id"));
-
-                    die();
-
-                }
-
-            } else {
-
-                $data = array(
-                    "title" => $this->input->post("title"),
-                    "description" => $this->input->post("description"),
-                    "url" => convertToSEO($this->input->post("title")),
-                );
-
-            }
-
-            $update = $this->user_model->update(array("id" => $id), $data);
-
-            // TODO Alert sistemi eklenecek...
-            if($update){
-
+            $insert = $this->user_model->update(array("id" => $id),
+                array(
+                    "password"     => md5($this->input->post("password")),                  
+                )
+            );
+            if($insert){
                 $alert = array(
                     "title" => "İşlem Başarılı",
-                    "text" => "Kayıt başarılı bir şekilde güncellendi",
+                    "text" => "Şifreniz başarılı bir şekilde güncellendi",
                     "type"  => "success"
                 );
-
             } else {
 
                 $alert = array(
                     "title" => "İşlem Başarısız",
-                    "text" => "Kayıt Güncelleme sırasında bir problem oluştu",
+                    "text" => "Güncelleme sırasında bir problem oluştu",
                     "type"  => "error"
                 );
             }
 
-            // İşlemin Sonucunu Session'a yazma işlemi...
+
             $this->session->set_flashdata("alert", $alert);
-
             redirect(base_url("users"));
-
-        } else {
-
+            die();
+        }  else {
             $viewData = new stdClass();
-
             /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
             $viewData->viewFolder = $this->viewFolder;
-            $viewData->subViewFolder = "update";
+            $viewData->subViewFolder = "password";
             $viewData->form_error = true;
-
-            /** Tablodan Verilerin Getirilmesi.. */
             $viewData->item = $this->user_model->get(
                 array(
                     "id"    => $id,
@@ -431,7 +398,11 @@ class Users extends CI_Controller
             );
 
         }
+            }
 
-    }
+
+
+
+
 
 }
