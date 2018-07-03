@@ -401,17 +401,7 @@ class Users extends CI_Controller
 
 
 
-public function login()
-{
-          $viewData = new stdClass();
 
-         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "login";
-
-        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);  
-
-}
 
 
 }

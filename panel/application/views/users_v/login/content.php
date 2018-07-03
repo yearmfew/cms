@@ -1,6 +1,6 @@
 <div id="back-to-home">
         <a href="index.html" class="btn btn-outline btn-default"><i class="fa fa-home animated zoomIn"></i></a>
-    </div> <!-- Bu button ile frontenddeki anasayfaya yönlendirme yapılacak... -->
+    </div> <!-- TODO Bu button ile frontenddeki anasayfaya yönlendirme yapılacak... -->
     <div class="simple-page-wrap">
         <div class="simple-page-logo animated swing">
             <a href="index.html">
