@@ -13,6 +13,10 @@ class Users extends CI_Controller
 
         $this->load->model("user_model");
 
+        if (!get_active_user()) {
+            redirect(base_url("login"));
+        }
+
     }
 
     public function index(){
@@ -49,9 +53,6 @@ class Users extends CI_Controller
         $this->load->library("form_validation");
 
         // Kurallar yazilir..
-
-
-
         $this->form_validation->set_rules("user_name", "Kullanıcı Adı", "required|trim|is_unique[users.user_name]");
         $this->form_validation->set_rules("full_name", "Ad Soyad", "required|trim");
         $this->form_validation->set_rules("email", "E-mail", "required|trim|valid_email|is_unique[users.email]");

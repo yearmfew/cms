@@ -35,7 +35,7 @@
 									<td><?php echo $item->id; ?> </td>
 									<td ><?php echo $item->title; ?></td>
 									<!-- <td><?php echo $item->url; ?></td> -->
-									<td ><?php echo word_limiter($item['description'],10); ?></td>								
+									<td ><?php echo $item->description; ?></td>								
 									<td class="order"> <?php if ($item->news_type == "image"){ ?>
 										<i class="fa fa-image"> </i>									
 									<?php } elseif ($item->news_type == "video") {
@@ -45,7 +45,7 @@
 									<?php } ?>
 								</td>
 								
-  <td><?php echo word_limiter($bilgi['aciklama'],10);?></td>
+
 
 								<td>   
 
