@@ -25,16 +25,8 @@ function get_active_user()
 
 
 
+function get_readable_date($date){
 
+        return strftime('%e %B %Y', strtotime($date));
 
-
-
-/*function fileName($id)
-{
-		$file = $this->product_image_model->get(
-		array(
-			"id" => $id,
-		)
-	);
-		return $fileName = $file->img_url;
-}*/
+}

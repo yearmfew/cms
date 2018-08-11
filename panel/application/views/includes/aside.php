@@ -82,6 +82,7 @@
           <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
         </a>
         <ul class="submenu">
+          <li><a href="<?php echo base_url("galleries"); ?> "><span class="menu-text">Galeri ekle</span></a></li>
           <li><a href="#"><span class="menu-text">Resim Galerisi</span></a></li>
           <li><a href="#"><span class="menu-text">Video Galerisi</span></a></li>
           <li><a href="#"><span class="menu-text">Dosya Galerisi</span></a></li>
@@ -107,7 +108,7 @@
         </a>
       </li>
       <li>
-        <a href="javascript:void(0)" >
+        <a href="<?php echo base_url("courses"); ?> " >
           <i class="menu-icon fa fa-graduation-cap"></i>
           <span class="menu-text">Eğitimler</span>
         </a>
