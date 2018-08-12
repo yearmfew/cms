@@ -1,7 +1,7 @@
 <?php if(empty($item_images)) { ?>
 
     <div class="alert alert-info text-center">
-        <p>Burada herhangi bir resim bulunmamaktadır.</a></p>
+        <p>Burada herhangi bir veri bulunmamaktadır.</a></p>
     </div>
 
 <?php } else { ?>
