@@ -1,10 +1,14 @@
 <?php $user = get_active_user(); ?>
+<?php $settings = get_settings(); ?>
+
 <aside id="menubar" class="menubar light">
   <div class="app-user">
     <div class="media">
       <div class="media-left">
         <div class="avatar avatar-md avatar-circle">
-          <a href="javascript:void(0)"><img class="img-responsive" src="<?php echo base_url('assets'); ?>/assets/images/221.jpg" alt="avatar"/></a>
+          <a href="javascript:void(0)"><img class="img-responsive" 
+                                            src="<?php echo base_url("uploads/settings_v/$settings->logo"); ?>" 
+                                            alt="<?php echo convertToSeo($settings->company_name); ?>"/></a>
         </div><!-- .avatar -->
       </div>
       <div class="media-body">
@@ -96,6 +100,15 @@
           <span class="menu-text">Ürünler</span>
         </a>
       </li>
+
+
+      <li>
+        <a href="<?php echo base_url("services"); ?>">
+          <i class="menu-icon fa fa-cubes"></i>
+          <span class="menu-text">Hizmetlerimiz</span>
+        </a>
+      </li>
+
       <li>
         <a href="<?php echo base_url("news"); ?>" >
           <i class="menu-icon fa fa-newspaper-o"></i>
