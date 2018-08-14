@@ -47,6 +47,18 @@ class Galleries extends CI_Controller {
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 	}
 
+	public function new_gallery_video_form($id){
+
+		$viewData = new stdClass();
+		// view e gönderilecek değişkenlerin belirlenmesi
+		$viewData ->gallery_id 		= $id;
+		$viewData ->viewFolder 		= $this->viewFolder;
+		$viewData ->subViewFolder 	= "video/add";
+
+
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+	}
+
 
 	public function save(){
 
@@ -148,6 +160,79 @@ class Galleries extends CI_Controller {
         // Başarısız ise
             // Hata ekranda gösterilir...
 	}
+
+	public function gallery_video_save($id){
+
+		$this->load->library("form_validation");
+
+        // Kurallar yazilir..
+		$this->form_validation->set_rules("title", "Video Adı", "required|trim");
+		$this->form_validation->set_rules("url", "Video Url", "required|trim");
+
+		$this->form_validation->set_message(
+			array(
+				"required"  => "<b>{field}</b> alanı doldurulmalıdır"
+			)
+		);
+        // Form Validation Calistirilir..
+        // TRUE - FALSE
+		$validate = $this->form_validation->run();
+
+		if($validate){
+
+			$insert = $this->video_model->add(
+				array(
+					"title"         => $this->input->post("title"),
+					"url"           => $this->input->post("url"),
+					"gallery_id"	=> $id,
+					"rank"          => 0,
+					"isActive"      => 1,
+					"createdAt"     => date("Y-m-d H:i:s")
+				)
+			);
+
+            // TODO Alert sistemi eklenecek...
+			if($insert){
+
+				$alert = array(
+					"title" => "Tebrikler...",
+					"text" => "İşleminiz başarılı",
+					"type"  => "success"
+				);
+
+			} else {
+
+				$alert = array(
+					"title" => "ooppss",
+					"text" => "Bir sorun oluştu",
+					"type"  => "error"
+				);
+			}
+
+            // İşlemin Sonucunu Session'a yazma işlemi...
+			$this->session->set_flashdata("alert", $alert);
+
+			redirect(base_url("galleries/upload_form/$id"));
+
+		} else {
+
+			$viewData = new stdClass();
+
+			/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "video/add";
+			$viewData->form_error = true;
+			$viewData->gallery_id = $id;
+
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		}
+
+        // Başarılı ise
+            // Kayit işlemi baslar
+        // Başarısız ise
+            // Hata ekranda gösterilir...
+	}
+
 	public function update_form($id){
 
 		$viewData = new stdClass();
@@ -268,7 +353,6 @@ class Galleries extends CI_Controller {
             // Kayit işlemi baslar
         // Başarısız ise
             // Hata ekranda gösterilir...
-
 	}
 
 	public function delete($id){
@@ -339,8 +423,7 @@ class Galleries extends CI_Controller {
 
 		}
 	}
-	public function isActiveSetter($id)
-	{
+	public function isActiveSetter($id){
 		if($id){
 			$isActive = ($this->input->post("data") === "true") ? 1 : 0;
 
@@ -355,12 +438,30 @@ class Galleries extends CI_Controller {
 		}
 	}
 
-	public function imageIsActiveSetter($id)
-	{
-		if($id){
+	public function fileIsActiveSetter($id, $gallery_type){
+
+
+
+		if($id && $gallery_type){
+			switch ($gallery_type) {
+				case 'image':
+				$modelName = "image_model";
+				break;
+
+
+				case 'file':
+				$modelName = "file_model";
+				break;
+				default:
+				# code...
+				break;
+			}
+
+
+
 			$isActive = ($this->input->post("data") === "true") ? 1 : 0;
 
-			$this->galleries_image_model->update(array(
+			$this->$modelName->update(array(
 				"id"  => $id
 			),
 			array(
@@ -371,50 +472,42 @@ class Galleries extends CI_Controller {
 		}
 	}
 
+	public function fileRankSetter($gallery_type){
 
-	public function isCoverSetter($id, $parent_id)
-	{
-		if($id && $parent_id){
-			$isCover = ($this->input->post("data") === "true") ? 1 : 0;
+		switch ($gallery_type) {
+			case 'image':
+			$modelName = "image_model";
+			break;
 
-			// Kapak yapılmak istenen kayıt
-			$this->galleries_image_model->update(array(
-				"id"		  => $id,
-				"galleries_id"  => $parent_id
-			),
-			array(
-				"isCover"  => $isCover
-			)
-		);
-			// Kapak yapılmayan diğer kayıtlar
-			$this->galleries_image_model->update(array(
-				"id !="		  => $id,
-				"galleries_id"  => $parent_id
-			),
-			array(
-				"isCover"  => 0
-			)
-		);
 
-			$viewData = new stdClass();
+			case 'file':
+			$modelName = "file_model";
+			break;
+			default:
+		# code...
+			break;
+		}
 
-			/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-			$viewData->viewFolder = $this->viewFolder;
-			$viewData->subViewFolder = "image";
+		$data = $this->input->post("data");
 
-			$viewData->item_images = $this->galleries_image_model->get_all(
+		parse_str($data, $order);
+
+		$items = $order["ord"];
+
+		foreach ($items as $rank => $id){
+
+			$this->$modelName->update(
 				array(
-					"galleries_id"    => $parent_id
-				), "rank ASC"
+					"id"        => $id,
+					"rank !="   => $rank
+				),
+				array(
+					"rank"      => $rank
+				)
 			);
-
-			$render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData, true);
-
-			echo $render_html;
 
 		}
 	}
-
 
 	public function rankSetter(){
 		$data = $this->input->post("data");
@@ -432,33 +525,6 @@ class Galleries extends CI_Controller {
 			);
 		}
 	}
-
-
-	public function imageRankSetter(){
-
-
-		$data = $this->input->post("data");
-
-		parse_str($data, $order);
-
-		$items = $order["ord"];
-
-		foreach ($items as $rank => $id){
-
-			$this->galleries_image_model->update(
-				array(
-					"id"        => $id,
-					"rank !="   => $rank
-				),
-				array(
-					"rank"      => $rank
-				)
-			);
-
-		}
-
-	}
-
 
 	public function upload_form($id){
 
@@ -480,6 +546,7 @@ class Galleries extends CI_Controller {
 			);
 
 			$viewData->name="resimleri";
+			$viewData->subViewFolder = "image";
 			break;
 			case 'file':
 
@@ -490,6 +557,7 @@ class Galleries extends CI_Controller {
 			);
 
 			$viewData->name="dosyaları";
+			$viewData->subViewFolder = "image";
 			break;
 			case 'video':
 			
@@ -499,6 +567,7 @@ class Galleries extends CI_Controller {
 				), "rank ASC"
 			);
 			$viewData->name="videoları";
+			$viewData->subViewFolder = "video/list";
 			break;
 
 			default: 
@@ -506,26 +575,37 @@ class Galleries extends CI_Controller {
 			break;
 		}
 
-
-
-
-
 		/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
 		$viewData->viewFolder = $this->viewFolder;
-		$viewData->subViewFolder = "image";
 		$viewData->item=$item;
+		$viewData->gallery_type = $item->gallery_type;
 
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 	}
 
-	public function file_upload($id){
+	public function file_upload($gallery_id, $gallery_type, $folderName){
 
-		$file_name = convertToSEO(pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME)) .
-		"." . pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+		switch ($gallery_type) {
+			case 'image':
+			$path="uploads/$this->viewFolder/images/$folderName/";
+			$modelName = "image_model";	
+			$allowedTypes="jpg|jpeg|png";
+			break;
+			case 'file':
+			$path="uploads/$this->viewFolder/files/$folderName/";	
+			$modelName = "file_model";
+			$allowedTypes="pdf|doc|docx|txt";
+			break;
+			default:
 
-		$config["allowed_types"] 	= "jpg|jpeg|png";
-		$config["upload_path"]   	= "uploads/$this->viewFolder/";
-		$config["file_name"]        = $file_name;
+			break;
+		}
+
+		$file_name = convertToSEO(pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+
+		$config["allowed_types"] = $allowedTypes;
+		$config["upload_path"]   = $path;
+		$config["file_name"]     = $file_name;
 
 		$this->load->library("upload", $config);
 
@@ -535,25 +615,23 @@ class Galleries extends CI_Controller {
 
 			$uploaded_file = $this->upload->data("file_name");
 
-			$this->galleries_image_model->add(
+			$this->$modelName->add(
 				array(
-					"img_url"		=>$uploaded_file,
-					"rank"			=>0,
-					"isActive"		=>1,
-					"createdAt"		=>date("Y-m-d H:i:s"),
-					"galleries_id"	=>$id
+					"url"           => "{$config["upload_path"]}$uploaded_file",
+					"rank"          => 0,
+					"isActive"      => 1,
+					"createdAt"     => date("Y-m-d H:i:s"),
+					"title"			=> $file_name,
+					"gallery_id"    => $gallery_id
 				)
 			);
 
-
-		}else{
-			echo "işlem başarısız";
+		} else {
+			echo "islem basarisiz";
 		}
 	}
 
-
-
-	public function refresh_file_list($id){
+	public function refresh_file_list($gallery_id, $gallery_type){
 
 		$viewData = new stdClass();
 
@@ -561,29 +639,46 @@ class Galleries extends CI_Controller {
 		$viewData->viewFolder = $this->viewFolder;
 		$viewData->subViewFolder = "image";
 
-		$viewData->item_images = $this->galleries_image_model->get_all(
+		$modelName = ($gallery_type == "image") ? "image_model" : "file_model";
+
+		$viewData->items = $this->$modelName->get_all(
 			array(
-				"galleries_id"    => $id
+				"gallery_id"    => $gallery_id
 			)
 		);
 
-		$render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData, true);
+		$viewData->gallery_type = $gallery_type;
+
+		$render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/file_list_v", $viewData, true);
 
 		echo $render_html;
-
 	}
 
-	public function imageDelete($id, $parent_id)
-	{
+	public function fileDelete($id, $gallery_id, $gallery_type){
 
-		$fileName = $this->galleries_image_model->get(
+		switch ($gallery_type) {
+			case 'image':
+			$modelName = "image_model";
+			break;
+			
+			case 'file':
+			$modelName = "file_model";
+
+			break;
+			default:
+				# code...
+			break;
+		}
+
+
+		$fileName = $this->$modelName->get(
 			array(
 				"id"    => $id
 			)
 		);
 
 
-		$delete = $this->galleries_image_model->delete(
+		$delete = $this->$modelName->delete(
 			array(
 				"id" => $id,
 			)
@@ -593,16 +688,15 @@ class Galleries extends CI_Controller {
 
 		if ($delete) {
 
-			unlink("uploads/{$this->viewFolder}/$fileName->img_url");
+			unlink("$fileName->url");
 
-			redirect(base_url("galleries/image_form/$parent_id"));
+			redirect(base_url("galleries/upload_form/$gallery_id"));
 
 		}else {
 
-			redirect(base_url("galleries/image_form/$parent_id"));
+			redirect(base_url("galleries/upload_form/$gallery_id"));
 
 		}
-
 	}
 
 
