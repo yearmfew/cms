@@ -26,7 +26,7 @@
 							<th class="w50">Durumu</th>
 							<th>İşlemler</th>
 						</thead>
-						<tbody class="sortable" data-url ="<?php echo base_url("galleries/rankSetter"); ?>">
+						<tbody class="sortable" data-url ="<?php echo base_url("galleries/fileRankSetter/$gallery_type"); ?>">
 							<?php foreach ($items as $item) { ?>
 								<tr id="ord-<?php echo $item->id; ?>">
 									<th class="order"><i class="fa fa-reorder"></i></th>
@@ -46,7 +46,7 @@
 								</td>
 								<td class="text-center">			
 									<input 
-									data-url = "<?php echo base_url("galleries/isActiveSetter/$item->id"); ?>"
+									data-url = "<?php echo base_url("galleries/fileIsActiveSetter/$item->id/$gallery_type"); ?>"
 									class="isActive"
 									type="checkbox" 
 									data-size="small"
@@ -57,11 +57,11 @@
 								</td>
 								<td class="text-center">
 									<button
-									data-url="<?php echo base_url("galleries/delete/$item->id"); ?>"
+									data-url="<?php echo base_url("galleries/fileDelete/$item->id/$item->gallery_id/$gallery_type"); ?>"
 									class="btn btn-xs btn-danger btn-outline remove-btn">
 									<i class="fa fa-trash"></i> Sil
 								</button>
-								<a href="<?php echo base_url("galleries/update_form/$item->id"); ?> " class="btn btn-xs btn-info btn-outline"><i class="fa fa-pencil-square-o"></i>Düzenle</a>
+								<a href="<?php echo base_url("galleries/update_gallery_video_form/$item->id"); ?> " class="btn btn-xs btn-info btn-outline"><i class="fa fa-pencil-square-o"></i>Düzenle</a>
 
 							</td>
 						</tr>
