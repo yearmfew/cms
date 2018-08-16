@@ -25,8 +25,8 @@
                         <input type="file" name="img_url" class="form-control">
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-md btn-outline">Kaydet</button>
-                    <a href="<?php echo base_url("services"); ?>" class="btn btn-md btn-danger btn-outline">İptal</a>
+                    <button type="submit" class="btn btn-primary btn-xs btn-outline">Kaydet</button>
+                    <a href="<?php echo base_url("services"); ?>" class="btn btn-xs btn-danger btn-outline">İptal</a>
                 </form>
             </div><!-- .widget-body -->
         </div><!-- .widget -->
