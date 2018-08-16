@@ -23,7 +23,7 @@ function get_active_user(){
 
 function get_readable_date($date){
 
-	return strftime('%e %B %Y', strtotime($date));
+	return strftime('%#d %B %Y', strtotime($date));
 
 }
 
@@ -55,3 +55,28 @@ function get_settings(){
     return $settings;
 
 }
+
+function get_category_title($category_id = 0){
+
+    $t = get_instance();
+
+    $t->load->model("portfolio_category_model");
+
+    $category = $t->portfolio_category_model->get(
+
+        array(
+            "id" => $category_id
+        )
+    );
+
+    if($category){
+        return $category->title;
+    }
+    else{
+        return "<b style='color:red'>Tanımlı Değil</b>";
+    }
+
+}
+
+
+

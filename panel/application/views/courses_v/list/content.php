@@ -34,7 +34,7 @@
 									<td><?php echo $item->id; ?> </td>
 									<td ><?php echo $item->title; ?></td>
 									<td><?php echo $item->description; ?></td>
-									<td><?php echo $item->event_date; ?></td>
+									<td><?php echo get_readable_date($item->event_date); ?></td>
 									<td>   
 										<img width="100" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
 										alt=""
