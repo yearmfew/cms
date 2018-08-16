@@ -16,8 +16,7 @@ class Userop extends CI_Controller {
 
 
 
-	public function login()
-	{
+	public function login(){
 
 		if (get_active_user()) {
 			redirect(base_url());
@@ -33,8 +32,7 @@ class Userop extends CI_Controller {
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);  
 	}
 
-	public function do_login()
-	{
+	public function do_login(){
 		if (get_active_user()) {
 			redirect(base_url("login"));
 		}
@@ -114,17 +112,55 @@ class Userop extends CI_Controller {
 
 
 		}
-
 	}
 
-	public function logout()
-	{
+	public function logout(){
 
 		$this->session->unset_userdata("user");
 		redirect(base_url("login"));
+	}
+
+	public function send_email(){
+
+		$config = array(
+
+			"protocol"	=> "smtp",
+			"smtp_host" => "ssl://smtp.gmail.com",
+			"smtp_port" => "465",
+			"smtp_user" => "eniacyazilim@gmail.com",
+			"smtp_pass" => "eniac.123",
+			"starttls"  => true,
+			"charset"	=> "utf-8",
+			"mailtype"  => "html",
+			"wordwrap"  => true,
+			"newline"   => "\r\n"
+
+
+
+		);
+
+
+		$this->load->library('email', $config);
+
+		$this->email->from("eniacyazilim@gmail.com", "CMS");
+		$this->email->to("brlylmz23@gmail.com");
+		$this->email->subject("CMS için email denemeleri");
+		$this->email->message("deneme email postası...");
+
+		$send =	$this->email->send();	
+
+		if($send){ 
+			echo "E-posta başarılı bir şekilde gönderildi";
+		} else {
+
+			echo $this->email->print_debugger();
+		}
 
 
 	}
+
+
+
 
 
 }

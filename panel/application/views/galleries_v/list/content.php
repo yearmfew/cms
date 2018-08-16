@@ -28,7 +28,7 @@
 							<tr id="ord-<?php echo $item->id; ?>">
 								<th class="order"><i class="fa fa-reorder"></i></th>
 								<td><?php echo $item->id; ?> </td>
-								<td><?php echo $item->gallery_name; ?></td>
+								<td><?php echo $item->title; ?></td>
 								<td><?php echo $item->gallery_type; ?></td>
 								<td><?php echo $item->folder_name; ?></td>
 								<td class="text-center">			
@@ -48,8 +48,30 @@
 									class="btn btn-xs btn-danger btn-outline remove-btn">
 									<i class="fa fa-trash"></i> Sil
 								</button>
+								<?php 
+								switch ($item->gallery_type){
+									case 'image':
+									$button_icon = "fa-image";
+									$button_name = "Resimler";
+									break;
+									case 'file':
+									$button_icon = "fa-folder";
+									$button_name = "Dosyalar";
+									break;
+									case 'video':
+									$button_icon = "fa-play-circle-o";
+									$button_name = "Videolar";
+									break;
+
+									default:
+									$button_icon = "fa-question-circle-o";
+									break;
+								}
+								?>
+
+
 								<a href="<?php echo base_url("galleries/update_form/$item->id"); ?> " class="btn btn-xs btn-info btn-outline"><i class="fa fa-pencil-square-o"></i>Düzenle</a>
-								<a href="<?php echo base_url("galleries/image_form/$item->id"); ?>" class="btn btn-xs btn-dark btn-outline"><i class="fa fa-image"></i> Resimler</a>
+								<a href="<?php echo base_url("galleries/upload_form/$item->id"); ?>" class="btn btn-xs btn-dark btn-outline"><i class="fa <?php echo $button_icon; ?>"></i> <?php echo $button_name; ?></a>
 							</td>
 						</tr>
 					<?php } ?>
