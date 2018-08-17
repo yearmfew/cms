@@ -30,7 +30,7 @@
 								<td><?php echo $item->id; ?> </td>
 								<td><?php echo $item->title; ?></td>
 								<td><?php echo $item->url; ?></td>
-								<td><?php echo $item->description; ?></td>
+								<td><?php echo character_limiter(strip_tags($item->description), 50); ?></td>
 								<td class="text-center">			
 									<input 
 									data-url = "<?php echo base_url("product/isActiveSetter/$item->id"); ?>"

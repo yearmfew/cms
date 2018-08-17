@@ -9,6 +9,7 @@
 <script type="text/javascript" src="<?php echo base_url("assets"); ?>/plugins/rs-plugin-5/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
 <!-- Isotope javascript -->
 <script type="text/javascript" src="<?php echo base_url("assets"); ?>/plugins/isotope/isotope.pkgd.min.js"></script>
+
 <!-- Magnific Popup javascript -->
 <script type="text/javascript" src="<?php echo base_url("assets"); ?>/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
 <!-- Appear javascript -->
