@@ -34,8 +34,25 @@ class Home extends CI_Controller {
 			), "rank ASC"
 		);
 
+		$this->load->view($viewData->viewFolder, $viewData);
 
-		echo get_product_cover_image(35); die();
+	}
+
+
+
+	public function product_detail(){
+
+		$viewData = new stdClass();
+		$viewData->viewFolder = "product_v";
+
+		$this->load->model("product_model");
+		$this->load->helper("text");
+
+		$viewData->products = $this->product_model->get_all(
+			array(
+				"isActive"  => 1
+			), "rank ASC"
+		);
 
 		$this->load->view($viewData->viewFolder, $viewData);
 
@@ -43,6 +60,3 @@ class Home extends CI_Controller {
 
 
 }
-
-/* End of file Home.php */
-/* Location: ./application/controllers/Home.php */
