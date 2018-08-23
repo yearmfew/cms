@@ -127,8 +127,8 @@ class Userop extends CI_Controller {
 			"protocol"	=> "smtp",
 			"smtp_host" => "ssl://smtp.gmail.com",
 			"smtp_port" => "465",
-			"smtp_user" => "eniacyazilim@gmail.com",
-			"smtp_pass" => "eniac.123",
+			"smtp_user" => "calimero.gonder@gmail.com",
+			"smtp_pass" => "5308673640.fb",
 			"starttls"  => true,
 			"charset"	=> "utf-8",
 			"mailtype"  => "html",
@@ -142,7 +142,7 @@ class Userop extends CI_Controller {
 
 		$this->load->library('email', $config);
 
-		$this->email->from("eniacyazilim@gmail.com", "CMS");
+		$this->email->from("calimero.gonder@gmail.com", "CMS");
 		$this->email->to("brlylmz23@gmail.com");
 		$this->email->subject("CMS için email denemeleri");
 		$this->email->message("deneme email postası...");
@@ -156,6 +156,123 @@ class Userop extends CI_Controller {
 			echo $this->email->print_debugger();
 		}
 
+
+	}
+
+
+	public function forget_password(){
+
+
+		if(get_active_user()){
+			redirect(base_url());
+		}
+
+		$viewData = new stdClass();
+
+		/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+		$viewData->viewFolder = $this->viewFolder;
+		$viewData->subViewFolder = "forget_password";
+
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+
+	}
+
+	public function reset_password(){
+
+		$this->load->library("form_validation");
+
+        // Kurallar yazilir..
+
+		$this->form_validation->set_rules("email", "E-mail", "required|trim|valid_email");
+		
+		$this->form_validation->set_message(
+			array(
+				"required"      =>"<b>{field}</b> alanı doldurulmalıdır",
+				"valid_email"   =>"lütfen geçerli bir E-posta adresi giriniz"
+			)
+		);
+
+        // Form Validation Calistirilir..
+		if($this->form_validation->run() === FALSE){
+			$viewData = new stdClass();
+			/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "forget_password";
+			$viewData->form_error = true;
+
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		} else{
+
+			$user = $this->user_model->get( array(
+
+				"isActive" =>1,
+				"email" => $this->input->post("email")
+			)
+		);
+
+			if($user){
+
+				$this->load->helper("string");
+				$temp_password = random_string();
+
+				$send = send_email($user->email, "Şifremi Unuttum", "Yeni Şifreniz <b>{$temp_password}</b>");
+
+				if($send){ 
+					echo "Şifreniz değiştirilmiştir. E-posta gelen kutunuzu kontrol ediniz.";
+
+					$this->user_model->update(
+						array(
+							"id" 	=> $user->id
+						),
+
+						array(
+							"password" 	=> md5($temp_password)
+						)
+					);
+
+					$alert = array(
+						"title" => "Tebrikler",
+						"text" 	=> "Geçici şifreniz posta gelen kutunuza gönderildi. Lütfen E-postanızı kontrol ediniz...",
+						"type"  => "success"
+					);
+
+					$this->session->set_flashdata("alert", $alert);
+					redirect(base_url("login"));
+					die();
+
+				} else {
+
+				//	echo $this->email->print_debugger();
+
+					$alert = array(
+						"title" => "Hata",
+						"text" 	=> "E-posta Gönderilemedi...",
+						"type"  => "error"
+					);
+
+					$this->session->set_flashdata("alert", $alert);
+					redirect(base_url("sifremi-unuttum"));
+					die();
+
+				}
+
+
+
+
+
+			} else{
+				$alert = array(
+					"title" => "Hata",
+					"text" 	=> "Böyle bir kullanıcı bulunamadı",
+					"type"  => "error"
+				);
+
+				$this->session->set_flashdata("alert", $alert);
+				redirect(base_url("sifremi-unuttum"));
+
+			}
+
+		} 
 
 	}
 

@@ -81,16 +81,6 @@
                                             <li><strong>Place: </strong> <span class="text-right"><?php echo $portfolio->place; ?></span></li>
                                             <li><strong>URL: </strong> <span class="text-right"><a href="<?php echo $portfolio->portfolio_url; ?>"><?php echo $portfolio->portfolio_url; ?></a></span></li>
                                         </ul>
-<!--                                        <a href="#" class="btn btn-animated btn-default btn-lg">External Link <i class="fa fa-external-link"></i></a>-->
-<!--                                        <h3>Share This</h3>-->
-<!--                                        <div class="separator-2"></div>-->
-<!--                                        <ul class="social-links colored circle small">-->
-<!--                                            <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>-->
-<!--                                            <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>-->
-<!--                                            <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>-->
-<!--                                            <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>-->
-<!--                                            <li class="xing"><a target="_blank" href="http://www.xing.com"><i class="fa fa-xing"></i></a></li>-->
-<!--                                        </ul>-->
                                     </div>
                                 </div>
                             </aside>

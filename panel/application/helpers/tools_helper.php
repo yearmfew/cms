@@ -78,7 +78,30 @@ function get_category_title($category_id = 0){
 
 }
 
+function send_email($toEmail = "", $subject = "", $message = ""){
+    $t = & get_instance();
 
+    $config = array(
+        "protocol"  => "smtp",
+        "smtp_host" => "ssl://smtp.gmail.com",
+        "smtp_port" => "465",
+        "smtp_user" => "calimero.gonder@gmail.com",
+        "smtp_pass" => "5308673640.fb",
+        "starttls"  => true,
+        "charset"   => "utf-8",
+        "mailtype"  => "html",
+        "wordwrap"  => true,
+        "newline"   => "\r\n"
+    );
+
+    $t->load->library('email', $config);
+    $t->email->from("calimero.gonder@gmail.com", "CMS");
+    $t->email->to($toEmail);
+    $t->email->subject($subject);
+    $t->email->message($message);
+
+    return $t->email->send();   
+}
 
 
 

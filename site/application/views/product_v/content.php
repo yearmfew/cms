@@ -90,7 +90,7 @@
                                             $image = ($image) ? base_url("panel/uploads/product_v/$image") : base_url("assets/images/portfolio-1.jpg");
                                             ?>
 
-                                            <img style="height:250px;" src="<?php echo $image; ?>" alt="">
+                                            <img src="<?php echo $image; ?>" alt="">
                                             <div class="overlay-bottom text-left">
                                                 <p class="lead margin-clear"><?php echo $product->title; ?></p>
                                             </div>

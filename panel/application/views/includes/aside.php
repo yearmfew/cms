@@ -75,7 +75,14 @@
         <li>
           <a href="<?php echo base_url("settings"); ?> ">
             <i class="menu-icon zmdi zmdi-settings zmdi-hc-lg"></i>
-            <span class="menu-text">Settings</span>
+            <span class="menu-text">Ayarlar</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?php echo base_url("emailsettings"); ?>">
+            <i class="menu-icon zmdi zmdi-email zmdi-hc-lg"></i>
+            <span class="menu-text">E-posta Ayarları</span>
           </a>
         </li>
 

@@ -1,3 +1,5 @@
+<?php $settings = get_settings(); ?>
+
 <!-- header-container start -->
 <div class="header-container">
 
@@ -24,7 +26,7 @@
 
                         <!-- name-and-slogan -->
                         <div class="site-slogan">
-                            Multipurpose HTML5 Template
+                            <?php echo $settings->slogan; ?>
                         </div>
 
                     </div>
@@ -71,10 +73,11 @@
                                             <li class="dropdown ">
                                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hakkımızda</a>
                                                 <ul class="dropdown-menu">
-                                                    <li ><a href="features-dark-page.html">Hakkımızda</a></li>
+                                                    <li ><a href="<?php echo base_url("hakkimizda"); ?>">Hakkımızda</a></li>
                                                     <li ><a href="<?php echo base_url("portfolyo-listesi"); ?>">Portfolyo</a></li>
-                                                    <li ><a href="features-backgrounds.html">Haberler</a></li>
-                                                    <li ><a href="features-grid.html">Referanslar</a></li>
+                                                    <li ><a href="<?php echo base_url("haberler"); ?>">Haberler</a></li>
+                                                    <li ><a href="<?php echo base_url("referanslar"); ?>">Referanslar</a></li>
+                                                    <li ><a href="<?php echo base_url("hizmetlerimiz"); ?>">Hizmetlerimiz</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown ">
@@ -86,9 +89,9 @@
                                                 </ul>
                                             </li>
                                             <li><a href="<?php echo base_url("urun-listesi"); ?>">Ürünler</a></li>
-                                            <li><a href="index.html">Eğitimler</a></li>
-                                            <li><a href="index.html">Markalar</a></li>
-                                            <li><a href="index.html">İletişim</a></li>
+                                            <li><a href="<?php echo base_url("egitim-listesi"); ?>">Eğitimler</a></li>
+                                            <li><a href="<?php echo base_url("markalar"); ?>">Markalar</a></li>
+                                            <li><a href="<?php echo base_url("iletisim"); ?>">İletişim</a></li>
 
                                         </ul>
                                         <!-- main-menu end -->

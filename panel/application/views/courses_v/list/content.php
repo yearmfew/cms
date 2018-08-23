@@ -7,13 +7,13 @@
 	</div><!-- END column -->
 
 	<div class="col-md-12 col-sm-12">
-		<div class="widget p-lg">
+		<div class="widget p-lg table-responsive">
 			<?php if (empty($items)) { ?>
 				<div class="alert alert-info text-center">
 					<p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("courses/new_form"); ?>" >tıklayınız</a></p>
 				</div>
 			<?php } else { ?>
-				<div class="table-responsive">
+	
 					
 					
 					<table class="table table-hover table-striped table-bordered content-container">
@@ -64,8 +64,7 @@
 						<?php } ?>
 					</tbody>
 				</table>
-			<?php } ?>
-		</div>
+
 	</div><!-- .widget -->
 </div><!-- END column -->
 </div>
