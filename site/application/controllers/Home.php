@@ -16,7 +16,11 @@ class Home extends CI_Controller {
     public function index(){
 
         // Anasayfa...
-        echo $this->viewFolder;
+        $viewData = new stdClass();
+
+        $viewData->viewFolder = "home_v";
+
+        $this->load->view($viewData->viewFolder, $viewData);
 
     }
 
@@ -244,7 +248,6 @@ class Home extends CI_Controller {
         $viewData = new stdClass();
         $viewData->viewFolder = "contact_v";
 
-
         $this->load->helper("captcha");
 
         $config = array(
@@ -260,7 +263,7 @@ class Home extends CI_Controller {
             "img_id"        => "captcha_img",
             "pool"          => "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
             "colors"        => array(
-                'background' => array(56,255,45),
+                'background' => array(255,255,255),
                 'border'     => array(255,255,255),
                 'text'       => array(0,0,0),
                 'grid'       => array(255,40,40)
@@ -269,12 +272,13 @@ class Home extends CI_Controller {
         );
 
         $viewData->captcha = create_captcha($config);
+
         $this->session->set_userdata("captcha", $viewData->captcha["word"]);
 
         $this->load->view($viewData->viewFolder, $viewData);
 
-
     }
+
 
     public function send_contact_message(){
 
@@ -306,16 +310,16 @@ class Home extends CI_Controller {
 
                 $email_message = "{$name} isimli ziyaretçi. Mesaj Bıraktı <br><b>Mesaj : </b> {$message} <br> <b>E-posta : </b> {$email}";
 
-                if(send_email("calimero.gonder@gmail.com", "Site İletişim Mesajı | $subject", $email_message)){
+                if(send_email("", "Site İletişim Mesajı | $subject", $email_message)){
 
-                    echo "işlem başarılı";
+                    // TODO Alert..
                 } else {
-                    echo "işlem başarısız";
+                    // TODO Alert..
                 }
 
             } else {
 
-                // TOdO Alert..
+                // TODO Alert..
 
                 redirect(base_url("iletisim"));
 
@@ -364,6 +368,7 @@ class Home extends CI_Controller {
         redirect(base_url("iletisim"));
 
     }
+
 
     public function news_list(){
 
@@ -443,7 +448,6 @@ class Home extends CI_Controller {
         }
 
     }
-
 
 
 }

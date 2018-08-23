@@ -31,7 +31,7 @@ function get_product_cover_image($product_id){
 function get_readable_date($date){
 
     setlocale(LC_ALL, 'tr_TR.UTF-8');
-    return strftime('%#d %B %Y', strtotime($date));
+    return strftime('%e %B %Y', strtotime($date));
 }
 
 function get_portfolio_category_title($id){
@@ -97,30 +97,42 @@ function get_settings(){
     return $settings;
 }
 
-
 function send_email($toEmail = "", $subject = "", $message = ""){
-    $t = & get_instance();
 
-    $config = array(
-        "protocol"  => "smtp",
-        "smtp_host" => "ssl://smtp.gmail.com",
-        "smtp_port" => "465",
-        "smtp_user" => "calimero.gonder@gmail.com",
-        "smtp_pass" => "5308673640.fb",
-        "starttls"  => true,
-        "charset"   => "utf-8",
-        "mailtype"  => "html",
-        "wordwrap"  => true,
-        "newline"   => "\r\n"
+    $t = &get_instance();
+
+    $t->load->model("emailsettings_model");
+
+    $email_settings = $t->emailsettings_model->get(
+        array(
+            "isActive"  => 1
+        )
     );
 
-    $t->load->library('email', $config);
-    $t->email->from("calimero.gonder@gmail.com", "CMS");
+    if(empty($toEmail))
+        $toEmail = $email_settings->to;
+
+    $config = array(
+
+        "protocol"   => $email_settings->protocol,
+        "smtp_host"  => $email_settings->host,
+        "smtp_port"  => $email_settings->port,
+        "smtp_user"  => $email_settings->user,
+        "smtp_pass"  => $email_settings->password,
+        "starttls"   => true,
+        "charset"    => "utf-8",
+        "mailtype"   => "html",
+        "wordwrap"   => true,
+        "newline"    => "\r\n"
+    );
+
+    $t->load->library("email", $config);
+
+    $t->email->from($email_settings->from, $email_settings->user_name);
     $t->email->to($toEmail);
     $t->email->subject($subject);
     $t->email->message($message);
 
-    return $t->email->send();   
+    return $t->email->send();
+
 }
-
-

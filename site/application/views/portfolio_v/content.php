@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <!-- banner start -->
                 <!-- ================ -->
-                <div class="pv-40 banner light-gray-bg">
+                <div class="pv-40 banner">
                     <div class="container clearfix">
 
                         <!-- slideshow start -->
@@ -91,7 +91,7 @@
 
                 <!-- section start -->
                 <!-- ================ -->
-                <section class="section light-gray-bg  pv-40 clearfix">
+                <section class="section pv-40 clearfix">
                     <div class="container">
                         <h3>Diğer <strong>Çalışmalarımız</strong></h3>
                         <div class="row grid-space-10">

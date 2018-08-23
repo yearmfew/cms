@@ -42,9 +42,15 @@
         <footer class="clearfix">
             <div class="link pull-right">
                 <ul class="social-links circle small colored clearfix margin-clear text-right animated-effect-1">
-                    <li class="twitter"><a class="share-button" target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo $news->title; ?>&url=<?php echo base_url("haber/$news->url"); ?>"><i class="fa fa-twitter"></i></a></li>
-                    <li class="facebook"><a class="share-button" target="_blank" href="https://www.facebook.com/sharer.php?u=<?php echo base_url("haber/$news->url"); ?>&t=<?php echo $news->title; ?>"><i class="fa fa-facebook"></i></a></li>
-                    <li class="googleplus"><a class="share-button"  target="_blank" href="http://plus.google.com/share?url=<?php echo basE_url("haber/$news->url"); ?>"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="twitter">
+                        <a class="share-button" target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo $news->title; ?> Haberi&url=<?php echo base_url("haber/$news->url"); ?>"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="facebook">
+                        <a class="share-button" target="_blank" href="https://www.facebook.com/sharer.php?u=<?php echo base_url("haber/$news->url"); ?>&t=<?php echo $news->title; ?> Haberi"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="googleplus">
+                        <a class="share-button" target="_blank" href="http://plus.google.com/share?url=<?php echo base_url("haber/$news->url"); ?>"><i class="fa fa-google-plus"></i></a>
+                    </li>
                 </ul>
             </div>
         </footer>

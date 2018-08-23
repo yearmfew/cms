@@ -54,7 +54,7 @@
                                         </div>
                                     </header>
                                     <div class="blogpost-content">
-                                        <p><?php echo $news->description; ?></p>
+                                        <p>Mauris dolor sapien, malesuada at interdum ut, hendrerit eget lorem. Nunc interdum mi neque, et  sollicitudin purus fermentum ut. Suspendisse faucibus nibh odio, a vehicula eros pharetra in. Maecenas  ullamcorper commodo rutrum. In iaculis lectus vel augue eleifend dignissim. Aenean viverra semper sollicitudin.</p>
                                     </div>
                                     <footer class="clearfix">
                                         <div class="link pull-right"><i class="icon-link"></i><a href="<?php echo base_url("haber/$news->url"); ?>">Detayına Git</a></div>
