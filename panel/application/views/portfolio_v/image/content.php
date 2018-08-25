@@ -2,7 +2,13 @@
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-body">
-                <form data-url="<?php echo base_url("portfolio/refresh_image_list/$item->id"); ?>" action="<?php echo base_url("portfolio/image_upload/$item->id"); ?>" id="dropzone" class="dropzone" data-plugin="dropzone" data-options="{ url: '<?php echo base_url("portfolio/image_upload/$item->id"); ?>'}">
+                <form 
+                data-url="<?php echo base_url("portfolio/refresh_image_list/$item->id"); ?>" 
+                action="<?php echo base_url("portfolio/image_upload/$item->id"); ?>" 
+                id="dropzone" 
+                class="dropzone" 
+                data-plugin="dropzone" 
+                data-options="{ url: '<?php echo base_url("portfolio/image_upload/$item->id"); ?>'}">
                     <div class="dz-message">
                         <h3 class="m-h-lg">Yüklemek istediğiniz resimleri buyara sürükleyiniz</h3>
                         <p class="m-b-lg text-muted">(Yüklemek için dosyalarınızı sürükleyiniz yada buraya tıklayınız)</p>

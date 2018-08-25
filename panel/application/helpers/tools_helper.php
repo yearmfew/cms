@@ -43,7 +43,7 @@ function get_settings(){
         if(!$settings) {
 
             $settings = new stdClass();
-            $settings->company_name = "kablosuzkedi";
+            $settings->company_name = "cms";
             $settings->logo         = "default";
             
         }
@@ -104,5 +104,58 @@ function send_email($toEmail = "", $subject = "", $message = ""){
 }
 
 
+function upload_picture($file, $uploadPath, $width, $height, $name){
 
+    $t = &get_instance();
+    $t->load->library("simpleimagelib");
+
+    if(!is_dir("{$uploadPath}/{$width}x{$height}")){
+        mkdir("{$uploadPath}/{$width}x{$height}");
+    }
+
+
+    $upload_error = false;
+    try {
+
+        $simpleImage = $t->simpleimagelib->get_simple_image_instance();
+
+        $simpleImage
+        ->fromFile($file)
+        ->thumbnail($width,$height,'center')
+        ->toFile("{$uploadPath}/{$width}x{$height}/$name", 'image/png');
+
+    }catch(Exception $err) {
+        $error =  $err->getMessage();
+        $upload_error = true;
+    }
+
+    if($upload_error){
+        echo $error;
+    } else {
+        return true;
+    }
+
+
+}
+
+function get_picture($upload_folder = "", $picture_name = "", $resolution = "50x50"){
+
+    if($picture_name != ""){
+
+        if(file_exists(FCPATH . "uploads/$upload_folder/$resolution/$picture_name")){
+            $picture_name = base_url("uploads/$upload_folder/$resolution/$picture_name");
+        } else {
+            $picture_name = base_url("assets/assets/images/default_image.png");
+
+        }
+
+    } else {
+
+        $picture_name = base_url("assets/assets/images/default_image.png");
+
+    }
+
+    return $picture_name;
+
+}
 

@@ -90,17 +90,10 @@ class Settings extends CI_Controller
 
             $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["logo"]["name"], PATHINFO_EXTENSION);
 
-            $config["allowed_types"] = "jpg|jpeg|png";
-            $config["upload_path"]   = "uploads/$this->viewFolder/";
-            $config["file_name"] = $file_name;
+            $image_70x36   = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",70,36, $file_name);
+            $image_250x150 = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",250,150, $file_name);
 
-            $this->load->library("upload", $config);
-
-            $upload = $this->upload->do_upload("logo");
-
-            if($upload){
-
-                $uploaded_file = $this->upload->data("file_name");
+            if($image_70x36 && $image_250x150){
 
                 $insert = $this->settings_model->add(
                     array(
@@ -118,7 +111,7 @@ class Settings extends CI_Controller
                         "twitter"       => $this->input->post("twitter"),
                         "instagram"     => $this->input->post("instagram"),
                         "linkedin"      => $this->input->post("linkedin"),
-                        "logo"          => $uploaded_file,
+                        "logo"          => $file_name,
                         "createdAt"     => date("Y-m-d H:i:s")
                     )
                 );
@@ -229,17 +222,15 @@ class Settings extends CI_Controller
 
                 $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["logo"]["name"], PATHINFO_EXTENSION);
 
-                $config["allowed_types"] = "jpg|jpeg|png";
-                $config["upload_path"] = "uploads/$this->viewFolder/";
-                $config["file_name"] = $file_name;
+                $image_70x36   = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",70,36, $file_name);
+                $image_250x150 = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",250,150, $file_name);
 
-                $this->load->library("upload", $config);
+                if($image_70x36 && $image_250x150){
 
-                $upload = $this->upload->do_upload("logo");
+                    unlink("uploads/$this->viewFolder/70x36/$logo");
+                    unlink("uploads/$this->viewFolder/250x150/$logo");
 
-                if ($upload) {
 
-                    $uploaded_file = $this->upload->data("file_name");
 
                     $data = array(
                         "company_name"  => $this->input->post("company_name"),
@@ -256,7 +247,7 @@ class Settings extends CI_Controller
                         "twitter"       => $this->input->post("twitter"),
                         "instagram"     => $this->input->post("instagram"),
                         "linkedin"      => $this->input->post("linkedin"),
-                        "logo"          => $uploaded_file,
+                        "logo"          => $file_name,
                         "updatedAt"     => date("Y-m-d H:i:s")
                     );
 

@@ -25,7 +25,7 @@
                 <?php if($settings->logo != "default"){ ?>
                     <img
                         width="70"
-                        src="<?php echo base_url("uploads/settings_v/$settings->logo"); ?>"
+                        src="<?php echo get_picture($viewFolder, $settings->logo, "250x150"); ?>"
                         alt=""
                         class="img-responsive">
 

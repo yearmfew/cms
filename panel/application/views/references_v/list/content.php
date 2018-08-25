@@ -20,13 +20,11 @@
 						<thead>
 							<th class="order"><i class="fa fa-reorder"></i></th>
 							<th class="w50">#id</th>
-							<th class="w150">Baslik</th>
-							<!-- <th>url</th> -->
+							<th class="w100">Baslik</th>
 							<th class="w250">Açıklama</th>
-							
-							<th class="w100">Logo</th>						
+							<th class="w50">Logo</th>						
 							<th class="w50">Durumu</th>
-							<th>İşlemler</th>
+							<th class="w100">İşlemler</th>
 						</thead>
 						<tbody class="sortable" data-url ="<?php echo base_url("references/rankSetter"); ?>">
 							<?php foreach ($items as $item) { ?>
@@ -34,17 +32,11 @@
 									<th class="order"><i class="fa fa-reorder"></i></th>
 									<td><?php echo $item->id; ?> </td>
 									<td ><?php echo $item->title; ?></td>
-									<td><?php echo $item->description; ?></td>
-									<!-- <td ><?php echo $item->description; ?></td>		 -->						
-
+									<td><?php echo character_limiter(strip_tags($item->description), 70); ?></td>
 									<td>   
- 
-										<img width="100" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
-										alt=""
-										class="img-rounded">
-
-
-
+										<img src="<?php echo get_picture($viewFolder, $item->img_url, "80x80");?>"
+										alt="<?php echo $item->img_url; ?>"
+										class=" w50 img-rounded">
 									</td>
 									<td class="text-center">			
 										<input 

@@ -7,7 +7,7 @@
   <div class="col-md-12">
     <div class="widget">
       <div class="widget-body">
-        <form action="<?php echo base_url("brands/update/$item->id"); ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url("brands/update/$item->id/$item->img_url"); ?>" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label>Başlık</label>
             <input class="form-control" placeholder="Başlık" name="title" value="<?php echo $item->title; ?>">
@@ -16,8 +16,10 @@
             <?php } ?>
           </div>
           <div class="row">
-            <div class="col-md-1 image_upload_container ">
-              <img src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?> " alt="">
+            <div class="col-md-2 image_upload_container ">
+
+              <img src="<?php echo get_picture($viewFolder, $item->img_url, "350x168");?>" alt="">
+
             </div>    
 
             <div class="col-md-9 form-group image_upload_container" ">

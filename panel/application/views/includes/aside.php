@@ -7,7 +7,7 @@
       <div class="media-left">
         <div class="avatar avatar-md avatar-circle">
           <a href="javascript:void(0)"><img class="img-responsive" 
-            src="<?php echo base_url("uploads/settings_v/$settings->logo"); ?>" 
+            src="<?php echo get_picture($viewFolder, $settings->logo, "250x150"); ?>" 
             alt="<?php echo convertToSeo($settings->company_name); ?>"/></a>
           </div><!-- .avatar -->
         </div>

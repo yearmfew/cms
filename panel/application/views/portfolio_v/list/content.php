@@ -26,7 +26,7 @@
                         <th>Müşteri</th>
                         <th>Bitiş Tarihi</th>
                         <th>Durumu</th>
-                        <th>İşlem</th>
+                        <th class="w250">İşlem</th>
                     </thead>
                     <tbody class="sortable" data-url="<?php echo base_url("portfolio/rankSetter"); ?>">
 
