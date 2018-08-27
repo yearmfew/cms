@@ -136,3 +136,24 @@ function send_email($toEmail = "", $subject = "", $message = ""){
     return $t->email->send();
 
 }
+
+function get_picture($upload_folder = "", $picture_name = "", $resolution = "50x50"){
+
+    if($picture_name != ""){
+
+        if(file_exists(FCPATH . "panel/uploads/$upload_folder/$resolution/$picture_name")){
+            $picture_name = base_url("panel/uploads/$upload_folder/$resolution/$picture_name");
+        } else {
+            $picture_name = base_url("assets/images/default_image.png");
+
+        }
+
+    } else {
+
+        $picture_name = base_url("assets/images/default_image.png");
+
+    }
+
+    return $picture_name;
+
+}

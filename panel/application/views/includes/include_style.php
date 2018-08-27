@@ -12,6 +12,7 @@
 
 <link rel="stylesheet" href="<?php echo base_url("assets"); ?>/assets/css/iziToast.min.css">
 <link rel="stylesheet" href="<?php echo base_url("assets"); ?>/assets/css/custom.css">
+<link rel="stylesheet" href="<?php echo base_url("assets"); ?>/assets/css/cropper.css">
 <script src="<?php echo base_url("assets"); ?>/libs/bower/breakpoints.js/dist/breakpoints.min.js"></script>
 <script>
     Breakpoints();

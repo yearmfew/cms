@@ -86,7 +86,7 @@ $(document).ready(function () {
 
 	// sortable ile değişiklik yaptığımızda değişikliği algılayan fonksiyon
 
- $(".content-container, .image_list_container").on("sortupdate", '.sortable',  function(event, ui){
+	$(".content-container, .image_list_container").on("sortupdate", '.sortable',  function(event, ui){
 
 		var $data = $(this).sortable("serialize");
 		var $data_url = $(this).data("url");
@@ -94,6 +94,18 @@ $(document).ready(function () {
 		$.post($data_url, {data : $data}, function(response){})
 
 	})
+
+
+
+// Butona tıkladığında belli bir bölümü açan fonksiyon. Slide ekleme sayfasında çalışıyor...
+$(".button_usage_btn").change(function(){
+
+$(".button-information-container").slideToggle();
+
+})
+
+
+
 
 
 	var uploadSection = Dropzone.forElement("#dropzone");

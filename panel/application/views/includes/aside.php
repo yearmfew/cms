@@ -7,7 +7,7 @@
       <div class="media-left">
         <div class="avatar avatar-md avatar-circle">
           <a href="javascript:void(0)"><img class="img-responsive" 
-            src="<?php echo get_picture($viewFolder, $settings->logo, "250x150"); ?>" 
+            src="<?php echo base_url("assets/assets/images/user.png"); ?>" 
             alt="<?php echo convertToSeo($settings->company_name); ?>"/></a>
           </div><!-- .avatar -->
         </div>
@@ -59,7 +59,7 @@
         <ul class="app-menu">
 
          <li>
-          <a href="documentation.html">
+          <a href="#">
             <i class="menu-icon zmdi zmdi-view-web zmdi-hc-lg"></i>
             <span class="menu-text">Siteyi Görüntüle</span>
           </a>
@@ -95,7 +95,7 @@
         </li>
 
         <li>
-          <a href="javascript:void(0)" >
+          <a href="<?php echo base_url("slides"); ?>" >
             <i class="menu-icon zmdi zmdi-layers zmdi-hc-lg"></i>
             <span class="menu-text">Slider</span>
           </a>
