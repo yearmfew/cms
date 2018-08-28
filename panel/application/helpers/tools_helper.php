@@ -162,3 +162,22 @@ function get_picture($upload_folder = "", $picture_name = "", $resolution = "50x
 
 }
 
+function get_page_list($page){
+
+    $page_list = array(
+        "homepage"      => "Anasayfa",
+        "about_us"      => "Hakkımızda Sayfası",
+        "news"          => "Haberler Sayfası",
+        "galleries"     => "Galeri Sayfası",
+        "portfolio"     => "Portfolyo Sayfası",
+        "references"    => "Referanslar Sayfası",
+        "services"      => "Hizmetler Sayfası",
+        "courses"       => "Eğitimler Sayfası",
+        "brands"        => "Markalar Sayfası",
+        "contact"       => "İletişim Sayfası",
+    );
+
+
+    return (empty($page)) ? $page_list : $page_list[$page];
+}
+
