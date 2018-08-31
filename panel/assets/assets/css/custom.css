@@ -4,7 +4,7 @@
     font-style: italic;
 }
 td{
-vertical-align: middle !important;
+    vertical-align: middle !important;
 }
 
 th {
@@ -13,7 +13,7 @@ th {
 
 td p{
     vertical-align: middle !important;
-	text-align: center;
+    text-align: center;
 }
 
 tr td{
@@ -35,6 +35,9 @@ tr td{
 .sortable{
     cursor:move;
 }
+.sortable2{
+    cursor:move;
+}
 .video_url_container{
     display:none;
 }
@@ -50,3 +53,4 @@ tr td{
 .mb-1{
     margin-bottom:10px;
 }
+

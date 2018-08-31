@@ -42,6 +42,17 @@
 			}); // End Notify Plugin - The above code (from line 14) is used for demonstration purposes only
 
 		};
+	
+
+		$(".neverShowAgain").click(function(){
+
+			alert();
+
+		})
+
+
+
+
 	}); // End document ready
 
 })(this.jQuery);

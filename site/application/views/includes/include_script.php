@@ -39,3 +39,5 @@
 <script type="text/javascript" src="<?php echo base_url("assets"); ?>/js/template.js"></script>
 <!-- Custom Scripts -->
 <script type="text/javascript" src="<?php echo base_url("assets"); ?>/js/custom.js"></script>
+
+<?php $this->load->view("includes/popup"); ?>

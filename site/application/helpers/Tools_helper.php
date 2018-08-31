@@ -87,11 +87,11 @@ function get_settings(){
 
 //    if(empty($settings)){
 
-        $t->load->model("settings_model");
+    $t->load->model("settings_model");
 
-        $settings = $t->settings_model->get();
+    $settings = $t->settings_model->get();
 
-        $t->session->set_userdata("settings", $settings);
+    $t->session->set_userdata("settings", $settings);
 //    }
 
     return $settings;
@@ -155,5 +155,38 @@ function get_picture($upload_folder = "", $picture_name = "", $resolution = "50x
     }
 
     return $picture_name;
+
+}
+
+function get_popup($page=""){
+
+    $t = &get_instance();
+
+    $t->load->model("popup_model");
+
+    $popup = $t->popup_model->get(
+     array( 
+        "isActive"  =>1,
+        "page"      =>$page
+    )
+ );
+
+    return($popup);
+
+}
+
+function get_popup_service($page = ""){
+
+    $t = &get_instance();
+
+    $t->load->model("popup_model");
+    $popup = $t->popup_model->get(
+        array(
+            "isActive"  => 1,
+            "page"      => $page
+        )
+    );
+
+    return (!empty($popup)) ? $popup : false;
 
 }

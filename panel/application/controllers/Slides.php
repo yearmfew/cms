@@ -372,6 +372,7 @@ class Slides extends CI_Controller
 
         $items = $order["ord"];
 
+
         foreach ($items as $rank => $id){
 
             $this->slide_model->update(

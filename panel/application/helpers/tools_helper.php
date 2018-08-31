@@ -165,16 +165,16 @@ function get_picture($upload_folder = "", $picture_name = "", $resolution = "50x
 function get_page_list($page){
 
     $page_list = array(
-        "homepage"      => "Anasayfa",
-        "about_us"      => "Hakkımızda Sayfası",
-        "news"          => "Haberler Sayfası",
-        "galleries"     => "Galeri Sayfası",
-        "portfolio"     => "Portfolyo Sayfası",
-        "references"    => "Referanslar Sayfası",
-        "services"      => "Hizmetler Sayfası",
-        "courses"       => "Eğitimler Sayfası",
-        "brands"        => "Markalar Sayfası",
-        "contact"       => "İletişim Sayfası",
+        "home_v"                => "Anasayfa",
+        "about_v"               => "Hakkımızda Sayfası",
+        "news_list_v"           => "Haberler Sayfası",
+        "galleries"             => "Galeri Sayfası",
+        "portfolio_list_v"      => "Portfolyo Sayfası",
+        "reference_list_v"      => "Referanslar Sayfası",
+        "service_list_v"        => "Hizmetler Sayfası",
+        "course_list_v"         => "Eğitimler Sayfası",
+        "brand_list_v"          => "Markalar Sayfası",
+        "contact_v"             => "İletişim Sayfası",
     );
 
 
