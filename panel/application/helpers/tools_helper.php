@@ -89,7 +89,7 @@ function send_email($toEmail = "", $subject = "", $message = ""){
         "smtp_host" => "ssl://smtp.gmail.com",
         "smtp_port" => "465",
         "smtp_user" => "calimero.gonder@gmail.com",
-        "smtp_pass" => "5308673640.fb",
+        "smtp_pass" => "***",
         "starttls"  => true,
         "charset"   => "utf-8",
         "mailtype"  => "html",
