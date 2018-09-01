@@ -21,7 +21,7 @@
             </div>
 
             <div class="form-group">
-                <label>Şifre Tekrar
+                <label>Şifrenizi Tekrar Giriniz:
                 
                 <input id="sign-in-password" type="password" class="form-control" placeholder="Şifre" name="re_password">
                 </label>
