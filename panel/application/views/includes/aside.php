@@ -88,9 +88,8 @@
           </a>
           <ul class="submenu">
             <li>
-              <a href="">
+              <a href="#">
                 <span class="menu-text">Gelen Kutusu</span>
-                <span class="label label-primary menu-label">12</span>
               </a>
             </li>
             <li><a href="<?php echo base_url("Send_email"); ?>"><span class="menu-text">E-mail Gönder</span></a></li>
@@ -143,13 +142,13 @@
           </a>
           <ul class="submenu">
             <li>
-              <a href="<?php echo base_url("portfolio_categories"); ?>">
-                <span class="menu-text">Portfolyo Kategorileri</span>
+              <a href="<?php echo base_url("portfolio"); ?>">
+                <span class="menu-text">Portfolyo Listesi</span>
               </a>
             </li>
             <li>
-              <a href="<?php echo base_url("portfolio"); ?>">
-                <span class="menu-text">Portfolyo</span>
+              <a href="<?php echo base_url("portfolio_categories"); ?>">
+                <span class="menu-text">Portfolyo Kategorileri</span>
               </a>
             </li>
           </ul>

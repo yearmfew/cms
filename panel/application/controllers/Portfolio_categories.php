@@ -72,7 +72,7 @@ class Portfolio_categories extends CI_Controller
 
             $insert = $this->portfolio_category_model->add(
                 array(
-                    "title"         => $this->input->post("title"),
+                    "title"         => $this->input->post("title2"),
                     "isActive"      => 1,
                     "createdAt"     => date("Y-m-d H:i:s")
                 )
