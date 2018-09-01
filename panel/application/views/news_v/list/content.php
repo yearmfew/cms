@@ -34,7 +34,6 @@
 									<th class="order"><i class="fa fa-reorder"></i></th>
 									<td><?php echo $item->id; ?> </td>
 									<td ><?php echo $item->title; ?></td>
-									<!-- <td><?php echo $item->url; ?></td> -->
 									<td ><?php echo $item->description; ?></td>								
 									<td class="order"> <?php if ($item->news_type == "image"){ ?>
 										<i class="fa fa-image"> </i>									
@@ -51,7 +50,7 @@
 
 									<?php if($item->news_type == "image") { ?>
 
-										<img width="100" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
+										<img width="100" src="<?php echo get_picture($viewFolder, $item->img_url, "513x288"); ?>"
 										alt=""
 										class="img-rounded">
 

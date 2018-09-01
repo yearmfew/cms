@@ -58,3 +58,18 @@ $route["urun-detay/(:any)"] = "home/product_detail/$1";
 
 $route["portfolyo-listesi"]      = "home/portfolio_list";
 $route["portfolyo-detay/(:any)"] = "home/portfolio_detail/$1";
+
+$route["egitim-listesi"] = "home/course_list";
+$route["egitim-detay/(:any)"] = "home/course_detail/$1";
+
+$route["referanslar"]   = "home/reference_list";
+$route["markalar"]      = "home/brand_list";
+$route["hizmetlerimiz"] = "home/service_list";
+$route["hakkimizda"]    = "home/about_us";
+
+$route["iletisim"]        = "home/contact";
+$route["mesaj-gonder"]    = "home/send_contact_message";
+$route["abone-ol"]        = "home/make_me_member";
+
+$route["haberler"]        = "home/news_list";
+$route["haber/(:any)"]    = "home/news/$1";

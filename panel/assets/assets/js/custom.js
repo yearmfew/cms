@@ -38,6 +38,16 @@ $(document).ready(function () {
 	data yani checked değerini yoluyoruz
 	ve sayfayı yenilemeden o metodu çalıştırmış oluyoruz.*/
 
+
+	$(".content-container").on('click', '.btn-brl', function(){
+		var $data_url = $(this).data("url");
+		window.location.href = $data_url;
+
+
+
+	})
+
+
 	$(".content-container, .image_list_container").on('change', '.isActive', function(){
 
 		var $data = $(this).prop("checked");
@@ -86,7 +96,7 @@ $(document).ready(function () {
 
 	// sortable ile değişiklik yaptığımızda değişikliği algılayan fonksiyon
 
- $(".content-container, .image_list_container").on("sortupdate", '.sortable',  function(event, ui){
+	$(".content-container, .image_list_container").on("sortupdate", '.sortable',  function(event, ui){
 
 		var $data = $(this).sortable("serialize");
 		var $data_url = $(this).data("url");
@@ -95,35 +105,60 @@ $(document).ready(function () {
 
 	})
 
+	$(".sortable2").on("sortupdate", function(event, ui){
+		var $data = $(this).sortable("serialize");
+		var $data_url = $(this).data("url");
 
-	var uploadSection = Dropzone.forElement("#dropzone");
+		$.post($data_url, {data : $data}, function(response){})
 
-	uploadSection.on("complete", function(file){
-
-		var $data_url = $("#dropzone").data("url");
-
-		$.post($data_url, {}, function(response){
-
-			$(".image_list_container").html(response);
-// image_list_container adlı sınıfı kullandığın yere dropzone dan gelen veriyi yolla.
-$('[data-switchery]').each(function(){
-	var $this = $(this),
-	color = $this.attr('data-color') || '#188ae2',
-	jackColor = $this.attr('data-jackColor') || '#ffffff',
-	size = $this.attr('data-size') || 'default'
-
-	new Switchery(this, {
-		color: color,
-		size: size,
-		jackColor: jackColor
-	});
-});
-$(".sortable").sortable();
-
-
-});
+		alert(response);
 
 	})
+
+// Butona tıkladığında belli bir bölümü açan fonksiyon. Slide ekleme sayfasında çalışıyor...
+$(".button_usage_btn").change(function(){
+
+	$(".button-information-container").slideToggle();
+
+})
+
+
+
+
+
+
+var uploadSection = Dropzone.forElement("#dropzone");
+
+uploadSection.on("complete", function(file){
+
+	var $data_url = $("#dropzone").data("url");
+
+	$.post($data_url, {}, function(response){
+
+		$(".image_list_container").html(response);
+			// image_list_container adlı sınıfı kullandığın yere dropzone dan gelen veriyi yolla.
+			$('[data-switchery]').each(function(){
+				var $this = $(this),
+				color = $this.attr('data-color') || '#188ae2',
+				jackColor = $this.attr('data-jackColor') || '#ffffff',
+				size = $this.attr('data-size') || 'default'
+
+				new Switchery(this, {
+					color: color,
+					size: size,
+					jackColor: jackColor
+				});
+			});
+
+			$(".sortable").sortable();
+
+
+		});
+
+})
+
+
+
 
 
 

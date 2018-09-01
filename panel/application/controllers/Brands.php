@@ -85,23 +85,15 @@ class Brands extends CI_Controller {
 
 			$file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
 
-			$config["allowed_types"] = "jpg|jpeg|png";
-			$config["upload_path"]   = "uploads/$this->viewFolder/";
-			$config["file_name"] = $file_name;
+			$image_350x168   = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",350,168, $file_name);
 
-			$this->load->library("upload", $config);
-
-			$upload = $this->upload->do_upload("img_url");
-
-			if($upload){
-
-				$uploaded_file = $this->upload->data("file_name");
+			if($image_350x168){
 
 				$insert = $this->brand_model->add(
 					array(
 						"title"         => $this->input->post("title"),
 						"url"           => convertToSEO($this->input->post("title")),
-						"img_url"       => $uploaded_file,
+						"img_url"       => $file_name,
 						"rank"          => 0,
 						"isActive"      => 1,
 						"createdAt"     => date("Y-m-d H:i:s")
@@ -179,121 +171,115 @@ class Brands extends CI_Controller {
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 	}
 
-  public function update($id){
+	public function update($id, $url){
 
-        $this->load->library("form_validation");
+		$this->load->library("form_validation");
 
         // Kurallar yazilir..
 
-        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+		$this->form_validation->set_rules("title", "Başlık", "required|trim");
 
-        $this->form_validation->set_message(
-            array(
-                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
-            )
-        );
+		$this->form_validation->set_message(
+			array(
+				"required"  => "<b>{field}</b> alanı doldurulmalıdır"
+			)
+		);
 
         // Form Validation Calistirilir..
-        $validate = $this->form_validation->run();
+		$validate = $this->form_validation->run();
 
-        if($validate){
+		if($validate){
 
             // Upload Süreci...
-            if($_FILES["img_url"]["name"] !== "") {
+			if($_FILES["img_url"]["name"] !== "") {
 
-                $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
+				$file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
 
-                $config["allowed_types"] = "jpg|jpeg|png";
-                $config["upload_path"] = "uploads/$this->viewFolder/";
-                $config["file_name"] = $file_name;
+				$image_350x168   = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",350,168, $file_name);
 
-                $this->load->library("upload", $config);
+				if($image_350x168){
 
-                $upload = $this->upload->do_upload("img_url");
+					unlink("uploads/{$this->viewFolder}/350x168/$url");
 
-                if ($upload) {
+					$data = array(
+						"title" => $this->input->post("title"),
+						"url" => convertToSEO($this->input->post("title")),
+						"img_url" => $file_name,
+					);
 
-                    $uploaded_file = $this->upload->data("file_name");
+				} else {
 
-                    $data = array(
-                        "title" => $this->input->post("title"),
-                        "url" => convertToSEO($this->input->post("title")),
-                        "img_url" => $uploaded_file,
-                    );
+					$alert = array(
+						"title" => "İşlem Başarısız",
+						"text" => "Görsel yüklenirken bir problem oluştu",
+						"type" => "error"
+					);
 
-                } else {
+					$this->session->set_flashdata("alert", $alert);
 
-                    $alert = array(
-                        "title" => "İşlem Başarısız",
-                        "text" => "Görsel yüklenirken bir problem oluştu",
-                        "type" => "error"
-                    );
+					redirect(base_url("brands/update_form/$id"));
 
-                    $this->session->set_flashdata("alert", $alert);
+					die();
 
-                    redirect(base_url("brands/update_form/$id"));
+				}
 
-                    die();
+			} else {
 
-                }
+				$data = array(
+					"title" => $this->input->post("title"),
+					"description" => $this->input->post("description"),
+					"url" => convertToSEO($this->input->post("title")),
+				);
 
-            } else {
+			}
 
-                $data = array(
-                    "title" => $this->input->post("title"),
-                    "description" => $this->input->post("description"),
-                    "url" => convertToSEO($this->input->post("title")),
-                );
-
-            }
-
-            $update = $this->brand_model->update(array("id" => $id), $data);
+			$update = $this->brand_model->update(array("id" => $id), $data);
 
             // TODO Alert sistemi eklenecek...
-            if($update){
+			if($update){
 
-                $alert = array(
-                    "title" => "İşlem Başarılı",
-                    "text" => "Kayıt başarılı bir şekilde güncellendi",
-                    "type"  => "success"
-                );
+				$alert = array(
+					"title" => "İşlem Başarılı",
+					"text" => "Kayıt başarılı bir şekilde güncellendi",
+					"type"  => "success"
+				);
 
-            } else {
+			} else {
 
-                $alert = array(
-                    "title" => "İşlem Başarısız",
-                    "text" => "Kayıt Güncelleme sırasında bir problem oluştu",
-                    "type"  => "error"
-                );
-            }
+				$alert = array(
+					"title" => "İşlem Başarısız",
+					"text" => "Kayıt Güncelleme sırasında bir problem oluştu",
+					"type"  => "error"
+				);
+			}
 
             // İşlemin Sonucunu Session'a yazma işlemi...
-            $this->session->set_flashdata("alert", $alert);
+			$this->session->set_flashdata("alert", $alert);
 
-            redirect(base_url("brands"));
+			redirect(base_url("brands"));
 
-        } else {
+		} else {
 
-            $viewData = new stdClass();
+			$viewData = new stdClass();
 
-            /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-            $viewData->viewFolder = $this->viewFolder;
-            $viewData->subViewFolder = "update";
-            $viewData->form_error = true;
+			/** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "update";
+			$viewData->form_error = true;
 
-            /** Tablodan Verilerin Getirilmesi.. */
-            $viewData->item = $this->brand_model->get(
-                array(
-                    "id"    => $id,
-                )
-            );
+			/** Tablodan Verilerin Getirilmesi.. */
+			$viewData->item = $this->brand_model->get(
+				array(
+					"id"    => $id,
+				)
+			);
 
-            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-        }
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+		}
 
-    }
+	}
 
-	public function delete($id)
+	public function delete($id, $url)
 	{
 
 		$delete = $this->brand_model->delete(
@@ -301,7 +287,7 @@ class Brands extends CI_Controller {
 				"id" => $id,
 			)
 		);
-
+		unlink("uploads/{$this->viewFolder}/350x168/$url");
 
 		if($delete){
 

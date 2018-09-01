@@ -4,7 +4,7 @@
     font-style: italic;
 }
 td{
-vertical-align: middle !important;
+    vertical-align: middle !important;
 }
 
 th {
@@ -13,7 +13,7 @@ th {
 
 td p{
     vertical-align: middle !important;
-	text-align: center;
+    text-align: center;
 }
 
 tr td{
@@ -35,6 +35,33 @@ tr td{
 .sortable{
     cursor:move;
 }
+.sortable2{
+    cursor:move;
+}
 .video_url_container{
     display:none;
 }
+
+.button-information-container{
+    display:none;
+    border: 1px solid #ccc;
+    padding:5px;
+    margin-bottom:10px;
+    border-radius:5px;
+}
+
+.mb-1{
+    margin-bottom:10px;
+}
+
+.newCategory{
+    display:none;
+}
+
+/*.optionButton{
+
+color: white;
+
+   }
+
+*/

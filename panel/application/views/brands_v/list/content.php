@@ -21,7 +21,7 @@
 							<th class="order"><i class="fa fa-reorder"></i></th>
 							<th class="w50">#id</th>
 							<th class="w150">Baslik</th>
-							<th class="w100">Logo</th>						
+							<th class="w50">Logo</th>						
 							<th class="w50">Durumu</th>
 							<th>İşlemler</th>
 						</thead>
@@ -32,9 +32,9 @@
 									<td><?php echo $item->id; ?> </td>
 									<td ><?php echo $item->title; ?></td>
 									<td>   
-										<img width="100" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
-										alt=""
-										class="img-rounded">
+										<img  src="<?php echo get_picture($viewFolder, $item->img_url, "350x168");?>"
+										alt="$item->img_url"
+										class=" w50 img-rounded">
 									</td>
 									<td class="text-center">			
 										<input 
@@ -49,7 +49,7 @@
 									</td>
 									<td class="text-center w150">
 										<button
-										data-url="<?php echo base_url("brands/delete/$item->id"); ?>"
+										data-url="<?php echo base_url("brands/delete/$item->id/$item->img_url"); ?>"
 										class="btn btn-xs btn-danger btn-outline remove-btn">
 										<i class="fa fa-trash"></i> Sil
 									</button>

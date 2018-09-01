@@ -76,7 +76,7 @@
                         <div class="col-md-3 ">
                             <label> Kayıtlı Resim:</label>
                             
-                            <img src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?> " alt="">
+                            <img src="<?php echo get_picture($viewFolder, $item->img_url, "513x288"); ?> " alt="">
 
                         </div>    
 

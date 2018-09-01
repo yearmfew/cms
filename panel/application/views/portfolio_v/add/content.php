@@ -4,11 +4,11 @@
             Yeni Portfolyo Ekle
         </h4>
     </div><!-- END column -->
-    <div class="col-md-12">
+    <div class="col-md-12 content-container">
         <div class="widget">
             <div class="widget-body">
-                <form action="<?php echo base_url("portfolio/save"); ?>" method="post">
-
+               <form action="<?php echo base_url("portfolio/save"); ?>" method="post">
+                <form>
                     <div class="row">
 
                         <div class="form-group col-md-6">
@@ -20,24 +20,33 @@
                         </div>
 
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label>Kategori</label>
-                            <select name="category_id" class="form-control">
+                            <select name="category_id" class="form-control add_new_category">
+
 
                                 <?php foreach ($categories as $category) { ?>
-                                 
-                                    <option value="<?php echo $category->id; ?> "><?php echo $category->title; ?></option>
+
+                                    <option 
+
+                                    value="<?php echo $category->id; ?>"><?php echo $category->title; ?></option>
+
 
                                 <?php } ?>
+                                <option <?php echo (isset($new_category)) ? "selected" : "" ; ?>  class="optionButton bg-dark text-white " value="addNew"><h1 style="line-height:20px;" >Yeni Ekle</h1></option> 
 
                             </select>
+                        </div>
+
+                        <div class="form-group col-md-2 newCategory" >
+                            <label> Yeni Kategori: </label>
+                            <input type="text" name="new_category" class="form-control"> 
                             <?php if(isset($form_error)){ ?>
-                                <small class="pull-right input-form-error"> <?php echo form_error("client"); ?></small>
+                                <small class="pull-right input-form-error"> <?php echo form_error("new_category"); ?></small>
                             <?php } ?>
                         </div>
 
                     </div>
-
 
                     <div class="row">
 
@@ -89,7 +98,8 @@
                         <label>Açıklama</label>
                         <textarea name="description" class="m-0" data-plugin="summernote" data-options="{height: 250}"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-xs btn-outline">Kaydet</button>
+
+                    <button type="submit" class="btn btn-primary btn-xs btn-outline">Kaydet</button> 
                     <a href="<?php echo base_url("portfolio"); ?>" class="btn btn-xs btn-danger btn-outline">İptal</a>
                 </form>
             </div><!-- .widget-body -->

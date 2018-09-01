@@ -21,7 +21,7 @@
 						<th>url</th>
 						<th>Açıklama</th>
 						<th>Durumu</th>
-						<th>İşlemler</th>
+						<th class="w250">İşlemler</th>
 					</thead>
 					<tbody class="sortable" data-url ="<?php echo base_url("product/rankSetter"); ?>">
 						<?php foreach ($items as $item) { ?>

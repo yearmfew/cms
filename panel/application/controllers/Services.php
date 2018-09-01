@@ -47,7 +47,6 @@ class Services extends CI_Controller
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
     }
-
     public function save(){
 
         $this->load->library("form_validation");
@@ -84,27 +83,21 @@ class Services extends CI_Controller
         if($validate){
 
             // Upload Süreci...
-
             $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
 
-            $config["allowed_types"] = "jpg|jpeg|png";
-            $config["upload_path"]   = "uploads/$this->viewFolder/";
-            $config["file_name"] = $file_name;
 
-            $this->load->library("upload", $config);
 
-            $upload = $this->upload->do_upload("img_url");
+            $image_555x343 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",555,343, $file_name);
+            $image_350x215 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",350,217, $file_name);
 
-            if($upload){
-
-                $uploaded_file = $this->upload->data("file_name");
+            if($image_350x215 && $image_555x343 ){
 
                 $insert = $this->service_model->add(
                     array(
                         "title"         => $this->input->post("title"),
                         "description"   => $this->input->post("description"),
                         "url"           => convertToSEO($this->input->post("title")),
-                        "img_url"       => $uploaded_file,
+                        "img_url"       => $file_name,
                         "rank"          => 0,
                         "isActive"      => 1,
                         "createdAt"     => date("Y-m-d H:i:s")
@@ -161,7 +154,6 @@ class Services extends CI_Controller
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-
     }
 
     public function update_form($id){
@@ -174,19 +166,17 @@ class Services extends CI_Controller
                 "id"    => $id,
             )
         );
-        
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "update";
         $viewData->item = $item;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-
-
     }
 
 
-    public function update($id){
+    public function update($id, $img_url){
 
         $this->load->library("form_validation");
 
@@ -210,23 +200,19 @@ class Services extends CI_Controller
 
                 $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
 
-                $config["allowed_types"] = "jpg|jpeg|png";
-                $config["upload_path"] = "uploads/$this->viewFolder/";
-                $config["file_name"] = $file_name;
+                $image_555x343 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",555,343, $file_name);
+                $image_350x217 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",350,217, $file_name);
 
-                $this->load->library("upload", $config);
+                if($image_350x217 && $image_555x343 ){
 
-                $upload = $this->upload->do_upload("img_url");
-
-                if ($upload) {
-
-                    $uploaded_file = $this->upload->data("file_name");
+                    unlink("uploads/$this->viewFolder/555x343/$img_url");
+                    unlink("uploads/$this->viewFolder/350x217/$img_url");
 
                     $data = array(
                         "title" => $this->input->post("title"),
                         "description" => $this->input->post("description"),
                         "url" => convertToSEO($this->input->post("title")),
-                        "img_url" => $uploaded_file,
+                        "img_url" => $file_name,
                     );
 
                 } else {
@@ -256,6 +242,7 @@ class Services extends CI_Controller
             }
 
             $update = $this->service_model->update(array("id" => $id), $data);
+
 
             // TODO Alert sistemi eklenecek...
             if($update){
@@ -301,13 +288,16 @@ class Services extends CI_Controller
 
     }
 
-    public function delete($id){
+    public function delete($id, $img_url){
 
         $delete = $this->service_model->delete(
             array(
                 "id"    => $id
             )
         );
+
+        unlink("uploads/$this->viewFolder/555x343/$img_url");
+        unlink("uploads/$this->viewFolder/350x217/$img_url");
 
         // TODO Alert Sistemi Eklenecek...
         if($delete){

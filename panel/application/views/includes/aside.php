@@ -7,7 +7,7 @@
       <div class="media-left">
         <div class="avatar avatar-md avatar-circle">
           <a href="javascript:void(0)"><img class="img-responsive" 
-            src="<?php echo base_url("uploads/settings_v/$settings->logo"); ?>" 
+            src="<?php echo base_url("assets/assets/images/user.png"); ?>" 
             alt="<?php echo convertToSeo($settings->company_name); ?>"/></a>
           </div><!-- .avatar -->
         </div>
@@ -59,7 +59,7 @@
         <ul class="app-menu">
 
          <li>
-          <a href="documentation.html">
+          <a href="#">
             <i class="menu-icon zmdi zmdi-view-web zmdi-hc-lg"></i>
             <span class="menu-text">Siteyi Görüntüle</span>
           </a>
@@ -75,8 +75,33 @@
         <li>
           <a href="<?php echo base_url("settings"); ?> ">
             <i class="menu-icon zmdi zmdi-settings zmdi-hc-lg"></i>
-            <span class="menu-text">Settings</span>
+            <span class="menu-text">Ayarlar</span>
           </a>
+        </li>
+
+
+        <li class="has-submenu">
+          <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-inbox zmdi-hc-lg"></i>
+            <span class="menu-text">Mail Box</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+          </a>
+          <ul class="submenu">
+            <li>
+              <a href="#">
+                <span class="menu-text">Gelen Kutusu</span>
+              </a>
+            </li>
+            <li><a href="<?php echo base_url("Send_email"); ?>"><span class="menu-text">E-mail Gönder</span></a></li>
+            <li>
+              <a href="<?php echo base_url("emailsettings"); ?>">
+                <span class="menu-text">Ayarlar</span>
+              </a>
+            </li>
+
+
+
+          </ul>
         </li>
 
         <li class="has-submenu">
@@ -88,7 +113,7 @@
         </li>
 
         <li>
-          <a href="javascript:void(0)" >
+          <a href="<?php echo base_url("slides"); ?>" >
             <i class="menu-icon zmdi zmdi-layers zmdi-hc-lg"></i>
             <span class="menu-text">Slider</span>
           </a>
@@ -117,13 +142,13 @@
           </a>
           <ul class="submenu">
             <li>
-              <a href="<?php echo base_url("portfolio_categories"); ?>">
-                <span class="menu-text">Portfolyo Kategorileri</span>
+              <a href="<?php echo base_url("portfolio"); ?>">
+                <span class="menu-text">Portfolyo Listesi</span>
               </a>
             </li>
             <li>
-              <a href="<?php echo base_url("portfolio"); ?>">
-                <span class="menu-text">Portfolyo</span>
+              <a href="<?php echo base_url("portfolio_categories"); ?>">
+                <span class="menu-text">Portfolyo Kategorileri</span>
               </a>
             </li>
           </ul>
@@ -168,7 +193,7 @@
    </li>
 
    <li>
-    <a href="javascript:void(0)" >
+    <a href="<?php echo base_url("popups"); ?>" >
      <i class="menu-icon zmdi zmdi-lamp zmdi-hc-lg"></i>
      <span class="menu-text">Popup Hizmeti</span>
    </a>

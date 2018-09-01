@@ -1,84 +1,5 @@
 <?php
 
-function convertToSEO($text){
-
-	$turkce  = array("ç", "Ç", "ğ", "Ğ", "ü", "Ü", "ö", "Ö", "ı", "İ", "ş", "Ş", ".", ",", "!", "'", "\"", " ", "?", "*", "_", "|", "=", "(", ")", "[", "]", "{", "}");
-	$convert = array("c", "c", "g", "g", "u", "u", "o", "o", "i", "i", "s", "s", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-");
-
-	return strtolower(str_replace($turkce, $convert, $text));
-
-}
-
-
-function get_active_user(){
-	$t = &get_instance();
-
-	$user = $t->session->userdata("user");
-
-	if($user)
-		return $user;
-	else
-		return false;
-}
-
-function get_readable_date($date){
-
-    setlocale(LC_ALL, 'tr_TR.UTF-8');
-	return strftime('%#d %B %Y', strtotime($date));
-
-}
-
-
-function get_settings(){
-
-    $t = &get_instance();
-
-    $t->load->model("settings_model");
-
-    if($t->session->userdata("settings")){
-        $settings = $t->session->userdata("settings");
-    } else {
-
-        $settings = $t->settings_model->get();
-
-        if(!$settings) {
-
-            $settings = new stdClass();
-            $settings->company_name = "kablosuzkedi";
-            $settings->logo         = "default";
-            
-        }
-
-        $t->session->set_userdata("settings", $settings);
-
-    }
-
-    return $settings;
-
-}
-
-function get_category_title($category_id = 0){
-
-    $t = get_instance();
-
-    $t->load->model("portfolio_category_model");
-
-    $category = $t->portfolio_category_model->get(
-
-        array(
-            "id" => $category_id
-        )
-    );
-
-    if($category){
-        return $category->title;
-    }
-    else{
-        return "<b style='color:red'>Tanımlı Değil</b>";
-    }
-
-}
-
 function get_product_cover_image($product_id){
 
     $t = &get_instance();
@@ -107,6 +28,12 @@ function get_product_cover_image($product_id){
 }
 
 
+function get_readable_date($date){
+
+    setlocale(LC_ALL, 'tr_TR.UTF-8');
+    return strftime('%e %B %Y', strtotime($date));
+}
+
 function get_portfolio_category_title($id){
 
     $t = &get_instance();
@@ -121,6 +48,7 @@ function get_portfolio_category_title($id){
     );
 
     return (empty($portfolio)) ? false : $portfolio->title;
+
 
 }
 
@@ -151,3 +79,114 @@ function get_portfolio_cover_image($id){
 
 }
 
+function get_settings(){
+
+    $t = &get_instance();
+
+//    $settings = $t->session->userdata("settings");
+
+//    if(empty($settings)){
+
+    $t->load->model("settings_model");
+
+    $settings = $t->settings_model->get();
+
+    $t->session->set_userdata("settings", $settings);
+//    }
+
+    return $settings;
+}
+
+function send_email($toEmail = "", $subject = "", $message = ""){
+
+    $t = &get_instance();
+
+    $t->load->model("emailsettings_model");
+
+    $email_settings = $t->emailsettings_model->get(
+        array(
+            "isActive"  => 1
+        )
+    );
+
+    if(empty($toEmail))
+        $toEmail = $email_settings->to;
+
+    $config = array(
+
+        "protocol"   => $email_settings->protocol,
+        "smtp_host"  => $email_settings->host,
+        "smtp_port"  => $email_settings->port,
+        "smtp_user"  => $email_settings->user,
+        "smtp_pass"  => $email_settings->password,
+        "starttls"   => true,
+        "charset"    => "utf-8",
+        "mailtype"   => "html",
+        "wordwrap"   => true,
+        "newline"    => "\r\n"
+    );
+
+    $t->load->library("email", $config);
+
+    $t->email->from($email_settings->from, $email_settings->user_name);
+    $t->email->to($toEmail);
+    $t->email->subject($subject);
+    $t->email->message($message);
+
+    return $t->email->send();
+
+}
+
+function get_picture($upload_folder = "", $picture_name = "", $resolution = "50x50"){
+
+    if($picture_name != ""){
+
+        if(file_exists(FCPATH . "panel/uploads/$upload_folder/$resolution/$picture_name")){
+            $picture_name = base_url("panel/uploads/$upload_folder/$resolution/$picture_name");
+        } else {
+            $picture_name = base_url("assets/images/default_image.png");
+
+        }
+
+    } else {
+
+        $picture_name = base_url("assets/images/default_image.png");
+
+    }
+
+    return $picture_name;
+
+}
+
+function get_popup($page=""){
+
+    $t = &get_instance();
+
+    $t->load->model("popup_model");
+
+    $popup = $t->popup_model->get(
+     array( 
+        "isActive"  =>1,
+        "page"      =>$page
+    )
+ );
+
+    return($popup);
+
+}
+
+function get_popup_service($page = ""){
+
+    $t = &get_instance();
+
+    $t->load->model("popup_model");
+    $popup = $t->popup_model->get(
+        array(
+            "isActive"  => 1,
+            "page"      => $page
+        )
+    );
+
+    return (!empty($popup)) ? $popup : false;
+
+}
